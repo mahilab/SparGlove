@@ -79,7 +79,7 @@ int main(int argc, char* argv[]) {
     q8.open();
 
     // create Spar Glove instance
-	SparGlove sg(q8.DO[0], q8.AO[0], q8.AI[0], q8.encoder[0]);
+	Spar_glove sg(q8.DO[0], q8.AO[0], q8.AI[0], q8.encoder[0]);
 
     // enable Q8 Usb
     q8.enable();

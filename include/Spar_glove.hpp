@@ -1,8 +1,18 @@
 #pragma once
 
-#include <MEL/Communications/MelShare.hpp>
-#include <MEL/Mechatronics/Motor.hpp>
+#ifndef MEL_Spar_glove_HPP
+#define MEL_Spar_glove_HPP
+
 #include <MEL/Mechatronics/Robot.hpp>
+#include <MEL/Mechatronics/Motor.hpp>
+#include <MEL/Mechatronics/PdController.hpp>
+#include "SparConfiguration.hpp"
+#include "Spar_Parameters.hpp"
+#include <atomic>
+#include <vector>
+
+#include <MEL/Communications/MelShare.hpp>
+
 #include <MEL/Mechatronics/Amplifier.hpp>
 #include <MEL/Mechatronics/PositionSensor.hpp>
 
@@ -18,7 +28,7 @@
 #include <MEL/Core/Timer.hpp>
 #include <MEL/Utility/Options.hpp>
 #include <MEL/Math/Functions.hpp>
-#include <MEL/Mechatronics/PdController.hpp>
+
 #include <MEL/Math/Butterworth.hpp>
 #include <MEL/Math/Waveform.hpp>
 #include <MEL/Math/Integrator.hpp>
@@ -32,15 +42,16 @@ using namespace mel;
 // Spar Glove driver adapted from HAPTIC PADDLE example
 //==============================================================================
 
-class SparGlove : public Robot {
+class Spar_glove : public Robot {
 
 public:
 
 	/// Constructor
-	SparGlove(DigitalOutput::Channel d_o,
+	Spar_glove(DigitalOutput::Channel d_o,
 		AnalogOutput::Channel ao,
 		AnalogInput::Channel ai,
 		Encoder::Channel enc) :
+		
 		// Robot constructor
 		Robot("spar_glove"),
 		// init amplifier
@@ -70,3 +81,5 @@ private:
 	Motor motor_;
 	Encoder::Channel encoder_;
 };
+
+#endif // MEL_Spar_glove_HPP
