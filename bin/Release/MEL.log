@@ -1,0 +1,827 @@
+2018-11-07 16:06:41.363 INFO  [17336] Logger 0 Initialized
+2018-11-07 16:08:45.029 INFO  [17308] Logger 0 Initialized
+2018-11-07 16:08:45.203 VERB  [17308] Set q8_usb_0 options to: "update_rate=fast;decimation=1;"
+2018-11-07 16:08:45.203 VERB  [17308] Stopped watchdog on q8_usb_0
+2018-11-07 16:08:45.203 VERB  [17308] Cleared watchdog on q8_usb_0
+2018-11-07 16:08:45.203 VERB  [17308] Sanity check on q8_usb_0 passed
+2018-11-07 16:08:45.203 VERB  [17308] Set q8_usb_0_AO expire values to {[0]:0, [1]:0, [2]:0, [3]:0, [4]:0, [5]:0, [6]:0, [7]:0}
+2018-11-07 16:08:45.203 VERB  [17308] Set q8_usb_0_DO expire values to {[0]:0, [1]:0, [2]:0, [3]:0, [4]:0, [5]:0, [6]:0, [7]:0}
+2018-11-07 16:08:45.213 INFO  [17308] Opened DAQ q8_usb_0
+2018-11-07 16:08:45.213 VERB  [17308] Enabled q8_usb_0_AI
+2018-11-07 16:08:45.217 VERB  [17308] Enabled q8_usb_0_AO
+2018-11-07 16:08:45.217 VERB  [17308] Enabled q8_usb_0_DI
+2018-11-07 16:08:45.217 VERB  [17308] Enabled q8_usb_0_DO
+2018-11-07 16:08:45.217 VERB  [17308] Enabled q8_usb_0_encoder
+2018-11-07 16:08:45.227 VERB  [17308] Enabled q8_usb_0
+2018-11-07 16:09:30.569 INFO  [17308] Calibrated Haptic Paddle hall effect sensor
+2018-11-07 16:09:30.631 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:30.632 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:30.632 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:30.632 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:30.633 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:30.633 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:30.633 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:30.634 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:30.634 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:30.635 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:30.635 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:30.635 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:30.636 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:30.637 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:30.638 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:30.639 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:30.651 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:30.652 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:30.653 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:30.657 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:30.664 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:30.667 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:30.673 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:30.675 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:30.679 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:30.686 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:30.689 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:30.699 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:30.705 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:30.710 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:30.716 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:30.718 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:30.723 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:30.732 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:30.738 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:30.739 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:30.743 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:30.749 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:30.750 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:30.751 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:30.754 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:30.762 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:30.766 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:30.772 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:30.780 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:30.783 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:30.787 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:30.797 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:30.803 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:30.808 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:30.815 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:30.819 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:30.826 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:30.830 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:30.837 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:30.842 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:30.848 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:30.852 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:30.859 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:30.863 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:30.870 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:30.874 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:30.883 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:30.889 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:30.895 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:30.901 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:30.906 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:30.916 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:30.922 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:30.928 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:30.935 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:30.939 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:30.947 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:30.951 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:30.957 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:30.962 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:30.968 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:30.972 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:30.981 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:30.985 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:30.991 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:30.996 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:31.002 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:31.007 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:31.015 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:31.019 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:31.029 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:31.035 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:31.040 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:31.047 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:31.051 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:31.058 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:31.063 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:31.069 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:31.073 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:31.081 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:31.085 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:31.094 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:31.101 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:31.105 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:31.113 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:31.117 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:31.123 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:31.128 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:31.135 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:31.139 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:31.147 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:31.150 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:31.157 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:31.163 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:31.169 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:31.173 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:31.182 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:31.189 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:31.194 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:31.200 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:31.203 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:31.207 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:31.216 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:31.223 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:31.229 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:31.235 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:31.240 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:31.247 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:31.251 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:31.258 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:31.263 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:31.269 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:31.274 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:31.284 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:31.291 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:31.297 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:31.303 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:31.313 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:31.318 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:31.325 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:31.329 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:31.336 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:31.340 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:31.349 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:31.356 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:31.362 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:31.369 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:31.373 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:31.382 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:31.389 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:31.394 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:31.400 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:31.403 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:31.413 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:31.417 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:31.423 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:31.428 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:31.435 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:31.439 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:31.448 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:31.452 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:31.459 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:31.463 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:31.469 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:31.471 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:31.481 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:31.485 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:31.493 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:31.497 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:31.503 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:31.507 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:31.515 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:31.519 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:31.528 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:31.534 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:31.538 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:31.546 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:31.550 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:31.556 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:31.562 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:31.568 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:31.573 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:31.582 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:31.590 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:31.595 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:31.602 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:31.607 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:31.617 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:31.624 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:31.631 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:31.642 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:31.649 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:31.655 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:31.664 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:31.670 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:31.675 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:31.682 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:31.687 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:31.695 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:31.699 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:31.705 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:31.711 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:31.717 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:31.719 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:31.730 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:31.735 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:31.741 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:31.747 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:31.753 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:31.759 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:31.766 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:31.770 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:31.781 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:31.788 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:31.795 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:31.804 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:31.814 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:31.819 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:31.828 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:31.835 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:31.841 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:31.848 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:31.853 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:31.862 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:31.871 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:31.877 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:31.884 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:31.889 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:31.898 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:31.905 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:31.912 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:31.919 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:31.923 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:31.933 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:31.939 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:31.945 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:31.951 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:31.956 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:31.964 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:31.969 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:31.977 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:31.982 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:31.988 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:31.997 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:32.000 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:32.004 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:32.014 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:32.020 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:32.025 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:32.032 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:32.036 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:32.048 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:32.055 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:32.061 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:32.067 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:32.069 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:32.080 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:32.084 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:32.091 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:32.096 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:32.102 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:32.106 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:32.114 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:32.118 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:32.125 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:32.130 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:32.136 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:32.140 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:32.147 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:32.152 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:32.159 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:32.163 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:32.169 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:32.173 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:32.183 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:32.189 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:32.194 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:32.201 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:32.205 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:32.213 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:32.217 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:32.223 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:32.228 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:32.234 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:32.239 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:32.246 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:32.251 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:32.257 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:32.262 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:32.269 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:32.273 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:32.283 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:32.290 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:32.295 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:32.301 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:32.305 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:32.315 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:32.321 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:32.324 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:32.334 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:32.336 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:32.346 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:32.350 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:32.357 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:32.363 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:32.369 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:32.373 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:32.383 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:32.389 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:32.395 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:32.401 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:32.405 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:32.413 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:32.417 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:32.423 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:32.429 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:32.435 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:32.439 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:32.449 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:32.455 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:32.459 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:32.468 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:32.472 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:32.480 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:32.484 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:32.490 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:32.495 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:32.501 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:32.506 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:32.513 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:32.518 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:32.524 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:32.530 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:32.536 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:32.540 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:32.550 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:32.556 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:32.562 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:32.568 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:32.570 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:32.580 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:32.584 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:32.591 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:32.597 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:32.603 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:32.607 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:32.615 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:32.619 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:32.626 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:32.631 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:32.637 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:32.641 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:32.648 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:32.652 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:32.661 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:32.668 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:32.672 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:32.680 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:32.684 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:32.690 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:32.695 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:32.701 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:32.705 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:32.713 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:32.718 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:32.724 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:32.729 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:32.736 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:32.739 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:32.747 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:32.751 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:32.758 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:32.763 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:32.769 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:32.774 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:32.782 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:32.786 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:32.796 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:32.803 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:32.807 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:32.814 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:32.818 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:32.824 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:32.831 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:32.839 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:32.847 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:32.851 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:32.858 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:32.863 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:32.869 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:32.873 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:32.883 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:32.889 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:32.895 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:32.901 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:32.906 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:32.913 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:32.918 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:32.924 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:32.929 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:32.936 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:32.940 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:32.949 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:32.955 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:32.961 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:32.967 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:32.971 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:32.979 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:32.983 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:32.989 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:32.995 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:33.001 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:33.006 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:33.013 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:33.018 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:33.024 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:33.030 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:33.036 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:33.046 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:33.049 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:33.053 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:33.062 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:33.068 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:33.072 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:33.080 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:33.085 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:33.091 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:33.096 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:33.103 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:33.107 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:33.114 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:33.122 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:33.128 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:33.134 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:33.139 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:33.148 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:33.155 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:33.160 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:33.166 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:33.171 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:33.179 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:33.183 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:33.189 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:33.195 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:33.201 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:33.205 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:33.213 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:33.217 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:33.223 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:33.230 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:33.236 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:33.241 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:33.248 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:33.252 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:33.259 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:33.264 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:33.270 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:33.280 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:33.284 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:33.291 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:33.297 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:33.303 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:33.305 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:33.314 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:33.317 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:33.321 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:33.330 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:33.337 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:33.339 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:33.349 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:33.353 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:33.361 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:33.366 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:33.372 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:33.378 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:33.384 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:33.386 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:33.396 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:33.401 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:33.407 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:33.413 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:33.419 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:33.423 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:33.431 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:33.436 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:33.445 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:33.452 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:33.456 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:33.464 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:33.468 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:33.475 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:33.480 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:33.486 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:33.496 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:33.500 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:33.507 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:33.512 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:33.518 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:33.522 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:33.530 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:33.535 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:33.542 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:33.547 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:33.553 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:33.558 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:33.565 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:33.569 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:33.577 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:33.581 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:33.588 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:33.593 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:33.598 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:33.601 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:33.605 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:33.615 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:33.621 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:33.626 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:33.632 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:33.634 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:09:33.644 INFO  [17308] Imported Haptic Paddle hall effect sensor calibration
+2018-11-07 16:37:58.088 INFO  [3084] Logger 0 Initialized
+2018-11-07 16:37:58.326 VERB  [3084] Set q8_usb_0 options to: "update_rate=fast;decimation=1;"
+2018-11-07 16:37:58.327 VERB  [3084] Stopped watchdog on q8_usb_0
+2018-11-07 16:37:58.327 VERB  [3084] Cleared watchdog on q8_usb_0
+2018-11-07 16:37:58.327 VERB  [3084] Sanity check on q8_usb_0 passed
+2018-11-07 16:37:58.327 VERB  [3084] Set q8_usb_0_AO expire values to {[0]:0, [1]:0, [2]:0, [3]:0, [4]:0, [5]:0, [6]:0, [7]:0}
+2018-11-07 16:37:58.327 VERB  [3084] Set q8_usb_0_DO expire values to {[0]:0, [1]:0, [2]:0, [3]:0, [4]:0, [5]:0, [6]:0, [7]:0}
+2018-11-07 16:37:58.338 INFO  [3084] Opened DAQ q8_usb_0
+2018-11-07 16:37:58.339 VERB  [3084] Enabled q8_usb_0_AI
+2018-11-07 16:37:58.339 VERB  [3084] Enabled q8_usb_0_AO
+2018-11-07 16:37:58.339 VERB  [3084] Enabled q8_usb_0_DI
+2018-11-07 16:37:58.339 VERB  [3084] Enabled q8_usb_0_DO
+2018-11-07 16:37:58.339 VERB  [3084] Enabled q8_usb_0_encoder
+2018-11-07 16:37:58.349 VERB  [3084] Enabled q8_usb_0
+2018-11-07 16:37:59.805 VERB  [3084] Enabled spar_glove
+2018-11-07 16:39:04.170 VERB  [3084] Disabled q8_usb_0_AI
+2018-11-07 16:39:04.170 VERB  [3084] Disabled q8_usb_0_AO
+2018-11-07 16:39:04.170 VERB  [3084] Disabled q8_usb_0_DI
+2018-11-07 16:39:04.170 VERB  [3084] Disabled q8_usb_0_DO
+2018-11-07 16:39:04.170 VERB  [3084] Disabled q8_usb_0_encoder
+2018-11-07 16:39:04.180 VERB  [3084] Disabled q8_usb_0
+2018-11-07 16:39:04.190 VERB  [3084] Set q8_usb_0 options to: "update_rate=fast;decimation=1;"
+2018-11-07 16:39:04.191 VERB  [3084] Stopped watchdog on q8_usb_0
+2018-11-07 16:39:04.191 VERB  [3084] Cleared watchdog on q8_usb_0
+2018-11-07 16:39:04.246 INFO  [3084] Closed DAQ q8_usb_0
+2018-11-07 20:42:00.087 INFO  [6476] Logger 0 Initialized
+2018-11-07 20:42:02.347 VERB  [6476] Set q8_usb_0 options to: "update_rate=fast;decimation=1;"
+2018-11-07 20:42:02.348 VERB  [6476] Stopped watchdog on q8_usb_0
+2018-11-07 20:42:02.348 VERB  [6476] Cleared watchdog on q8_usb_0
+2018-11-07 20:42:02.348 WARN  [6476] Sanity check on q8_usb_0 failed
+2018-11-07 20:42:02.358 VERB  [6476] Stopped watchdog on q8_usb_0
+2018-11-07 20:42:02.358 VERB  [6476] Cleared watchdog on q8_usb_0
+2018-11-07 20:42:02.409 VERB  [6476] Set q8_usb_0 options to: "update_rate=fast;decimation=1;"
+2018-11-07 20:42:02.409 VERB  [6476] Stopped watchdog on q8_usb_0
+2018-11-07 20:42:02.409 VERB  [6476] Cleared watchdog on q8_usb_0
+2018-11-07 20:42:02.409 WARN  [6476] Sanity check on q8_usb_0 failed
+2018-11-07 20:42:02.410 VERB  [6476] Stopped watchdog on q8_usb_0
+2018-11-07 20:42:02.410 VERB  [6476] Cleared watchdog on q8_usb_0
+2018-11-07 20:42:02.459 VERB  [6476] Set q8_usb_0 options to: "update_rate=fast;decimation=1;"
+2018-11-07 20:42:02.460 VERB  [6476] Stopped watchdog on q8_usb_0
+2018-11-07 20:42:02.460 VERB  [6476] Cleared watchdog on q8_usb_0
+2018-11-07 20:42:02.460 WARN  [6476] Sanity check on q8_usb_0 failed
+2018-11-07 20:42:02.461 VERB  [6476] Stopped watchdog on q8_usb_0
+2018-11-07 20:42:02.461 VERB  [6476] Cleared watchdog on q8_usb_0
+2018-11-07 20:42:02.509 VERB  [6476] Set q8_usb_0 options to: "update_rate=fast;decimation=1;"
+2018-11-07 20:42:02.509 VERB  [6476] Stopped watchdog on q8_usb_0
+2018-11-07 20:42:02.509 VERB  [6476] Cleared watchdog on q8_usb_0
+2018-11-07 20:42:02.509 WARN  [6476] Sanity check on q8_usb_0 failed
+2018-11-07 20:42:02.510 VERB  [6476] Stopped watchdog on q8_usb_0
+2018-11-07 20:42:02.510 VERB  [6476] Cleared watchdog on q8_usb_0
+2018-11-07 20:42:02.559 VERB  [6476] Set q8_usb_0 options to: "update_rate=fast;decimation=1;"
+2018-11-07 20:42:02.559 VERB  [6476] Stopped watchdog on q8_usb_0
+2018-11-07 20:42:02.559 VERB  [6476] Cleared watchdog on q8_usb_0
+2018-11-07 20:42:02.559 VERB  [6476] Sanity check on q8_usb_0 passed
+2018-11-07 20:42:02.559 VERB  [6476] Set q8_usb_0_AO expire values to {[0]:0, [1]:0, [2]:0, [3]:0, [4]:0, [5]:0, [6]:0, [7]:0}
+2018-11-07 20:42:02.559 VERB  [6476] Set q8_usb_0_DO expire values to {[0]:0, [1]:0, [2]:0, [3]:0, [4]:0, [5]:0, [6]:0, [7]:0}
+2018-11-07 20:42:02.569 INFO  [6476] Opened DAQ q8_usb_0
+2018-11-07 20:42:02.570 VERB  [6476] Enabled q8_usb_0_AI
+2018-11-07 20:42:02.570 VERB  [6476] Enabled q8_usb_0_AO
+2018-11-07 20:42:02.570 VERB  [6476] Enabled q8_usb_0_DI
+2018-11-07 20:42:02.570 VERB  [6476] Enabled q8_usb_0_DO
+2018-11-07 20:42:02.570 VERB  [6476] Enabled q8_usb_0_encoder
+2018-11-07 20:42:02.580 VERB  [6476] Enabled q8_usb_0
+2018-11-07 20:42:06.937 VERB  [6476] Enabled spar_glove
+2018-11-07 20:42:47.536 VERB  [6476] Timer with period 1000 us missed deadline by 96 us on tick number 39043
+2018-11-07 20:45:58.737 VERB  [6476] Timer with period 1000 us missed deadline by 548 us on tick number 230119
+2018-11-07 21:03:11.769 INFO  [240] Logger 0 Initialized
+2018-11-07 21:03:12.100 VERB  [240] Set q8_usb_0 options to: "update_rate=fast;decimation=1;"
+2018-11-07 21:03:12.101 VERB  [240] Stopped watchdog on q8_usb_0
+2018-11-07 21:03:12.101 VERB  [240] Cleared watchdog on q8_usb_0
+2018-11-07 21:03:12.101 WARN  [240] Sanity check on q8_usb_0 failed
+2018-11-07 21:03:12.101 VERB  [240] Stopped watchdog on q8_usb_0
+2018-11-07 21:03:12.101 VERB  [240] Cleared watchdog on q8_usb_0
+2018-11-07 21:03:12.147 VERB  [240] Set q8_usb_0 options to: "update_rate=fast;decimation=1;"
+2018-11-07 21:03:12.148 VERB  [240] Stopped watchdog on q8_usb_0
+2018-11-07 21:03:12.148 VERB  [240] Cleared watchdog on q8_usb_0
+2018-11-07 21:03:12.148 VERB  [240] Sanity check on q8_usb_0 passed
+2018-11-07 21:03:12.148 VERB  [240] Set q8_usb_0_AO expire values to {[0]:0, [1]:0, [2]:0, [3]:0, [4]:0, [5]:0, [6]:0, [7]:0}
+2018-11-07 21:03:12.148 VERB  [240] Set q8_usb_0_DO expire values to {[0]:0, [1]:0, [2]:0, [3]:0, [4]:0, [5]:0, [6]:0, [7]:0}
+2018-11-07 21:03:12.158 INFO  [240] Opened DAQ q8_usb_0
+2018-11-07 21:03:12.158 VERB  [240] Enabled q8_usb_0_AI
+2018-11-07 21:03:12.158 VERB  [240] Enabled q8_usb_0_AO
+2018-11-07 21:03:12.158 VERB  [240] Enabled q8_usb_0_DI
+2018-11-07 21:03:12.158 VERB  [240] Enabled q8_usb_0_DO
+2018-11-07 21:03:12.158 VERB  [240] Enabled q8_usb_0_encoder
+2018-11-07 21:03:12.168 VERB  [240] Enabled q8_usb_0
+2018-11-07 21:03:13.768 VERB  [240] Enabled spar_glove
+2018-11-07 21:03:13.768 WARN  [240] Opened an existing mutex when trying to create NamedMutex ms_position_mutex
+2018-11-07 21:03:18.158 VERB  [240] Timer with period 1000 us missed deadline by 2 ms on tick number 3294
+2018-11-07 21:03:18.163 VERB  [240] Timer with period 1000 us missed deadline by 131 us on tick number 3298
+2018-11-07 21:03:18.166 VERB  [240] Timer with period 1000 us missed deadline by 589 us on tick number 3300
+2018-11-07 21:03:18.178 VERB  [240] Timer with period 1000 us missed deadline by 7 ms on tick number 3304
+2018-11-07 21:03:18.305 VERB  [240] Timer with period 1000 us missed deadline by 2 ms on tick number 3424
+2018-11-07 21:03:18.321 VERB  [240] Timer with period 1000 us missed deadline by 361 us on tick number 3439
+2018-11-07 21:03:18.569 VERB  [240] Timer with period 1000 us missed deadline by 205 us on tick number 3683
+2018-11-07 21:03:18.843 VERB  [240] Timer with period 1000 us missed deadline by 200 us on tick number 3954
+2018-11-07 21:03:18.935 VERB  [240] Timer with period 1000 us missed deadline by 173 us on tick number 4045
+2018-11-07 21:03:19.164 VERB  [240] Timer with period 1000 us missed deadline by 1623 us on tick number 4269
+2018-11-07 21:03:19.180 VERB  [240] Timer with period 1000 us missed deadline by 400 us on tick number 4282
+2018-11-07 21:03:19.195 VERB  [240] Timer with period 1000 us missed deadline by 9 ms on tick number 4287
+2018-11-07 21:03:19.242 VERB  [240] Timer with period 1000 us missed deadline by 198 us on tick number 4324
+2018-11-07 21:03:19.274 VERB  [240] Timer with period 1000 us missed deadline by 79 us on tick number 4353
+2018-11-07 21:03:19.636 VERB  [240] Timer with period 1000 us missed deadline by 1509 us on tick number 4707
+2018-11-07 21:03:19.704 VERB  [240] Timer with period 1000 us missed deadline by 500 us on tick number 4772
+2018-11-07 21:05:13.071 INFO  [8732] Logger 0 Initialized
+2018-11-07 21:05:13.313 VERB  [8732] Set q8_usb_0 options to: "update_rate=fast;decimation=1;"
+2018-11-07 21:05:13.314 VERB  [8732] Stopped watchdog on q8_usb_0
+2018-11-07 21:05:13.314 VERB  [8732] Cleared watchdog on q8_usb_0
+2018-11-07 21:05:13.314 VERB  [8732] Sanity check on q8_usb_0 passed
+2018-11-07 21:05:13.314 VERB  [8732] Set q8_usb_0_AO expire values to {[0]:0, [1]:0, [2]:0, [3]:0, [4]:0, [5]:0, [6]:0, [7]:0}
+2018-11-07 21:05:13.314 VERB  [8732] Set q8_usb_0_DO expire values to {[0]:0, [1]:0, [2]:0, [3]:0, [4]:0, [5]:0, [6]:0, [7]:0}
+2018-11-07 21:05:13.324 INFO  [8732] Opened DAQ q8_usb_0
+2018-11-07 21:05:13.324 VERB  [8732] Enabled q8_usb_0_AI
+2018-11-07 21:05:13.324 VERB  [8732] Enabled q8_usb_0_AO
+2018-11-07 21:05:13.324 VERB  [8732] Enabled q8_usb_0_DI
+2018-11-07 21:05:13.324 VERB  [8732] Enabled q8_usb_0_DO
+2018-11-07 21:05:13.324 VERB  [8732] Enabled q8_usb_0_encoder
+2018-11-07 21:05:13.334 VERB  [8732] Enabled q8_usb_0
+2018-11-07 21:05:15.248 VERB  [8732] Enabled spar_glove
+2018-11-07 21:05:15.249 WARN  [8732] Opened an existing mutex when trying to create NamedMutex ms_position_mutex
+2018-11-07 21:05:21.238 VERB  [8732] Timer with period 1000 us missed deadline by 604 us on tick number 4769
+2018-11-07 21:35:25.728 INFO  [18864] Logger 0 Initialized
+2018-11-07 21:35:25.948 VERB  [18864] Set q8_usb_0 options to: "update_rate=fast;decimation=1;"
+2018-11-07 21:35:25.948 VERB  [18864] Stopped watchdog on q8_usb_0
+2018-11-07 21:35:25.948 VERB  [18864] Cleared watchdog on q8_usb_0
+2018-11-07 21:35:25.948 VERB  [18864] Sanity check on q8_usb_0 passed
+2018-11-07 21:35:25.948 VERB  [18864] Set q8_usb_0_AO expire values to {[0]:0, [1]:0, [2]:0, [3]:0, [4]:0, [5]:0, [6]:0, [7]:0}
+2018-11-07 21:35:25.948 VERB  [18864] Set q8_usb_0_DO expire values to {[0]:0, [1]:0, [2]:0, [3]:0, [4]:0, [5]:0, [6]:0, [7]:0}
+2018-11-07 21:35:25.959 INFO  [18864] Opened DAQ q8_usb_0
+2018-11-07 21:35:25.959 VERB  [18864] Enabled q8_usb_0_AI
+2018-11-07 21:35:25.959 VERB  [18864] Enabled q8_usb_0_AO
+2018-11-07 21:35:25.959 VERB  [18864] Enabled q8_usb_0_DI
+2018-11-07 21:35:25.959 VERB  [18864] Enabled q8_usb_0_DO
+2018-11-07 21:35:25.959 VERB  [18864] Enabled q8_usb_0_encoder
+2018-11-07 21:35:25.969 VERB  [18864] Enabled q8_usb_0
+2018-11-07 21:35:27.127 VERB  [18864] Enabled spar_glove
+2018-11-07 21:36:15.203 VERB  [18864] Timer with period 1000 us missed deadline by 144 us on tick number 47501
+2018-11-07 21:37:52.604 INFO  [616] Logger 0 Initialized
+2018-11-07 21:37:52.802 VERB  [616] Set q8_usb_0 options to: "update_rate=fast;decimation=1;"
+2018-11-07 21:37:52.803 VERB  [616] Stopped watchdog on q8_usb_0
+2018-11-07 21:37:52.803 VERB  [616] Cleared watchdog on q8_usb_0
+2018-11-07 21:37:52.803 VERB  [616] Sanity check on q8_usb_0 passed
+2018-11-07 21:37:52.803 VERB  [616] Set q8_usb_0_AO expire values to {[0]:0, [1]:0, [2]:0, [3]:0, [4]:0, [5]:0, [6]:0, [7]:0}
+2018-11-07 21:37:52.803 VERB  [616] Set q8_usb_0_DO expire values to {[0]:0, [1]:0, [2]:0, [3]:0, [4]:0, [5]:0, [6]:0, [7]:0}
+2018-11-07 21:37:52.813 INFO  [616] Opened DAQ q8_usb_0
+2018-11-07 21:37:52.813 VERB  [616] Enabled q8_usb_0_AI
+2018-11-07 21:37:52.813 VERB  [616] Enabled q8_usb_0_AO
+2018-11-07 21:37:52.813 VERB  [616] Enabled q8_usb_0_DI
+2018-11-07 21:37:52.813 VERB  [616] Enabled q8_usb_0_DO
+2018-11-07 21:37:52.813 VERB  [616] Enabled q8_usb_0_encoder
+2018-11-07 21:37:52.823 VERB  [616] Enabled q8_usb_0
+2018-11-07 21:37:54.234 VERB  [616] Enabled spar_glove
+2018-11-07 21:40:15.626 VERB  [616] Timer with period 1000 us missed deadline by 4 ms on tick number 139706
+2018-11-07 21:58:36.112 INFO  [18736] Logger 0 Initialized
+2018-11-07 21:58:36.399 VERB  [18736] Set q8_usb_0 options to: "update_rate=fast;decimation=1;"
+2018-11-07 21:58:36.400 VERB  [18736] Stopped watchdog on q8_usb_0
+2018-11-07 21:58:36.400 VERB  [18736] Cleared watchdog on q8_usb_0
+2018-11-07 21:58:36.400 VERB  [18736] Sanity check on q8_usb_0 passed
+2018-11-07 21:58:36.400 VERB  [18736] Set q8_usb_0_AO expire values to {[0]:0, [1]:0, [2]:0, [3]:0, [4]:0, [5]:0, [6]:0, [7]:0}
+2018-11-07 21:58:36.400 VERB  [18736] Set q8_usb_0_DO expire values to {[0]:0, [1]:0, [2]:0, [3]:0, [4]:0, [5]:0, [6]:0, [7]:0}
+2018-11-07 21:58:36.410 INFO  [18736] Opened DAQ q8_usb_0
+2018-11-07 21:58:36.411 VERB  [18736] Enabled q8_usb_0_AI
+2018-11-07 21:58:36.411 VERB  [18736] Enabled q8_usb_0_AO
+2018-11-07 21:58:36.411 VERB  [18736] Enabled q8_usb_0_DI
+2018-11-07 21:58:36.411 VERB  [18736] Enabled q8_usb_0_DO
+2018-11-07 21:58:36.411 VERB  [18736] Enabled q8_usb_0_encoder
+2018-11-07 21:58:36.421 VERB  [18736] Enabled q8_usb_0
+2018-11-07 21:58:38.086 VERB  [18736] Enabled spar_glove
+2018-11-07 22:11:31.310 INFO  [13864] Logger 0 Initialized
+2018-11-07 22:11:32.522 VERB  [13864] Set q8_usb_0 options to: "update_rate=fast;decimation=1;"
+2018-11-07 22:11:32.534 VERB  [13864] Stopped watchdog on q8_usb_0
+2018-11-07 22:11:32.534 VERB  [13864] Cleared watchdog on q8_usb_0
+2018-11-07 22:11:32.534 VERB  [13864] Sanity check on q8_usb_0 passed
+2018-11-07 22:11:32.534 VERB  [13864] Set q8_usb_0_AO expire values to {[0]:0, [1]:0, [2]:0, [3]:0, [4]:0, [5]:0, [6]:0, [7]:0}
+2018-11-07 22:11:32.534 VERB  [13864] Set q8_usb_0_DO expire values to {[0]:0, [1]:0, [2]:0, [3]:0, [4]:0, [5]:0, [6]:0, [7]:0}
+2018-11-07 22:11:32.544 INFO  [13864] Opened DAQ q8_usb_0
+2018-11-07 22:11:32.545 VERB  [13864] Enabled q8_usb_0_AI
+2018-11-07 22:11:32.545 VERB  [13864] Enabled q8_usb_0_AO
+2018-11-07 22:11:32.545 VERB  [13864] Enabled q8_usb_0_DI
+2018-11-07 22:11:32.545 VERB  [13864] Enabled q8_usb_0_DO
+2018-11-07 22:11:32.545 VERB  [13864] Enabled q8_usb_0_encoder
+2018-11-07 22:11:32.555 VERB  [13864] Enabled q8_usb_0
+2018-11-07 22:11:33.930 VERB  [13864] Enabled spar_glove
+2018-11-07 22:11:33.938 WARN  [13864] Opened an existing mutex when trying to create NamedMutex ms_position_mutex
+2018-11-07 22:13:40.649 INFO  [12388] Logger 0 Initialized
+2018-11-07 22:13:40.841 VERB  [12388] Set q8_usb_0 options to: "update_rate=fast;decimation=1;"
+2018-11-07 22:13:40.841 VERB  [12388] Stopped watchdog on q8_usb_0
+2018-11-07 22:13:40.841 VERB  [12388] Cleared watchdog on q8_usb_0
+2018-11-07 22:13:40.841 VERB  [12388] Sanity check on q8_usb_0 passed
+2018-11-07 22:13:40.841 VERB  [12388] Set q8_usb_0_AO expire values to {[0]:0, [1]:0, [2]:0, [3]:0, [4]:0, [5]:0, [6]:0, [7]:0}
+2018-11-07 22:13:40.841 VERB  [12388] Set q8_usb_0_DO expire values to {[0]:0, [1]:0, [2]:0, [3]:0, [4]:0, [5]:0, [6]:0, [7]:0}
+2018-11-07 22:13:40.851 INFO  [12388] Opened DAQ q8_usb_0
+2018-11-07 22:13:40.861 VERB  [12388] Enabled q8_usb_0_AI
+2018-11-07 22:13:40.861 VERB  [12388] Enabled q8_usb_0_AO
+2018-11-07 22:13:40.861 VERB  [12388] Enabled q8_usb_0_DI
+2018-11-07 22:13:40.861 VERB  [12388] Enabled q8_usb_0_DO
+2018-11-07 22:13:40.862 VERB  [12388] Enabled q8_usb_0_encoder
+2018-11-07 22:13:40.872 VERB  [12388] Enabled q8_usb_0
+2018-11-07 22:13:42.271 VERB  [12388] Enabled spar_glove
+2018-11-07 22:13:42.271 WARN  [12388] Opened an existing mutex when trying to create NamedMutex ms_position_mutex
+2018-11-07 22:15:43.659 INFO  [17128] Logger 0 Initialized
+2018-11-07 22:15:43.860 VERB  [17128] Set q8_usb_0 options to: "update_rate=fast;decimation=1;"
+2018-11-07 22:15:43.861 VERB  [17128] Stopped watchdog on q8_usb_0
+2018-11-07 22:15:43.861 VERB  [17128] Cleared watchdog on q8_usb_0
+2018-11-07 22:15:43.861 VERB  [17128] Sanity check on q8_usb_0 passed
+2018-11-07 22:15:43.861 VERB  [17128] Set q8_usb_0_AO expire values to {[0]:0, [1]:0, [2]:0, [3]:0, [4]:0, [5]:0, [6]:0, [7]:0}
+2018-11-07 22:15:43.861 VERB  [17128] Set q8_usb_0_DO expire values to {[0]:0, [1]:0, [2]:0, [3]:0, [4]:0, [5]:0, [6]:0, [7]:0}
+2018-11-07 22:15:43.871 INFO  [17128] Opened DAQ q8_usb_0
+2018-11-07 22:15:43.871 VERB  [17128] Enabled q8_usb_0_AI
+2018-11-07 22:15:43.871 VERB  [17128] Enabled q8_usb_0_AO
+2018-11-07 22:15:43.871 VERB  [17128] Enabled q8_usb_0_DI
+2018-11-07 22:15:43.871 VERB  [17128] Enabled q8_usb_0_DO
+2018-11-07 22:15:43.871 VERB  [17128] Enabled q8_usb_0_encoder
+2018-11-07 22:15:43.882 VERB  [17128] Enabled q8_usb_0
+2018-11-07 22:15:47.592 VERB  [17128] Enabled spar_glove
+2018-11-07 22:15:47.592 WARN  [17128] Opened an existing mutex when trying to create NamedMutex ms_position_mutex
+2018-11-07 22:17:46.688 INFO  [18800] Logger 0 Initialized
+2018-11-07 22:17:46.909 VERB  [18800] Set q8_usb_0 options to: "update_rate=fast;decimation=1;"
+2018-11-07 22:17:46.909 VERB  [18800] Stopped watchdog on q8_usb_0
+2018-11-07 22:17:46.909 VERB  [18800] Cleared watchdog on q8_usb_0
+2018-11-07 22:17:46.909 VERB  [18800] Sanity check on q8_usb_0 passed
+2018-11-07 22:17:46.909 VERB  [18800] Set q8_usb_0_AO expire values to {[0]:0, [1]:0, [2]:0, [3]:0, [4]:0, [5]:0, [6]:0, [7]:0}
+2018-11-07 22:17:46.909 VERB  [18800] Set q8_usb_0_DO expire values to {[0]:0, [1]:0, [2]:0, [3]:0, [4]:0, [5]:0, [6]:0, [7]:0}
+2018-11-07 22:17:46.919 INFO  [18800] Opened DAQ q8_usb_0
+2018-11-07 22:17:46.920 VERB  [18800] Enabled q8_usb_0_AI
+2018-11-07 22:17:46.920 VERB  [18800] Enabled q8_usb_0_AO
+2018-11-07 22:17:46.920 VERB  [18800] Enabled q8_usb_0_DI
+2018-11-07 22:17:46.920 VERB  [18800] Enabled q8_usb_0_DO
+2018-11-07 22:17:46.920 VERB  [18800] Enabled q8_usb_0_encoder
+2018-11-07 22:17:46.930 VERB  [18800] Enabled q8_usb_0
+2018-11-07 22:17:47.978 VERB  [18800] Enabled spar_glove
+2018-11-07 22:17:47.978 WARN  [18800] Opened an existing mutex when trying to create NamedMutex to_ms_mutex
+2018-11-07 22:19:22.496 VERB  [18800] Timer with period 1000 us missed deadline by 58 us on tick number 87754
+2018-11-07 22:19:22.914 VERB  [18800] Timer with period 1000 us missed deadline by 173 us on tick number 88170
+2018-11-07 22:20:24.985 INFO  [6224] Logger 0 Initialized
+2018-11-07 22:20:25.203 VERB  [6224] Set q8_usb_0 options to: "update_rate=fast;decimation=1;"
+2018-11-07 22:20:25.204 VERB  [6224] Stopped watchdog on q8_usb_0
+2018-11-07 22:20:25.204 VERB  [6224] Cleared watchdog on q8_usb_0
+2018-11-07 22:20:25.204 VERB  [6224] Sanity check on q8_usb_0 passed
+2018-11-07 22:20:25.204 VERB  [6224] Set q8_usb_0_AO expire values to {[0]:0, [1]:0, [2]:0, [3]:0, [4]:0, [5]:0, [6]:0, [7]:0}
+2018-11-07 22:20:25.204 VERB  [6224] Set q8_usb_0_DO expire values to {[0]:0, [1]:0, [2]:0, [3]:0, [4]:0, [5]:0, [6]:0, [7]:0}
+2018-11-07 22:20:25.214 INFO  [6224] Opened DAQ q8_usb_0
+2018-11-07 22:20:25.216 VERB  [6224] Enabled q8_usb_0_AI
+2018-11-07 22:20:25.216 VERB  [6224] Enabled q8_usb_0_AO
+2018-11-07 22:20:25.216 VERB  [6224] Enabled q8_usb_0_DI
+2018-11-07 22:20:25.216 VERB  [6224] Enabled q8_usb_0_DO
+2018-11-07 22:20:25.216 VERB  [6224] Enabled q8_usb_0_encoder
+2018-11-07 22:20:25.225 VERB  [6224] Enabled q8_usb_0
+2018-11-07 22:20:26.562 VERB  [6224] Enabled spar_glove
+2018-11-07 22:20:26.562 WARN  [6224] Opened an existing mutex when trying to create NamedMutex to_ms_mutex
+2018-11-07 22:21:01.981 INFO  [14876] Logger 0 Initialized
+2018-11-07 22:21:02.153 VERB  [14876] Set q8_usb_0 options to: "update_rate=fast;decimation=1;"
+2018-11-07 22:21:02.153 VERB  [14876] Stopped watchdog on q8_usb_0
+2018-11-07 22:21:02.153 VERB  [14876] Cleared watchdog on q8_usb_0
+2018-11-07 22:21:02.153 VERB  [14876] Sanity check on q8_usb_0 passed
+2018-11-07 22:21:02.153 VERB  [14876] Set q8_usb_0_AO expire values to {[0]:0, [1]:0, [2]:0, [3]:0, [4]:0, [5]:0, [6]:0, [7]:0}
+2018-11-07 22:21:02.154 VERB  [14876] Set q8_usb_0_DO expire values to {[0]:0, [1]:0, [2]:0, [3]:0, [4]:0, [5]:0, [6]:0, [7]:0}
+2018-11-07 22:21:02.163 INFO  [14876] Opened DAQ q8_usb_0
+2018-11-07 22:21:02.164 VERB  [14876] Enabled q8_usb_0_AI
+2018-11-07 22:21:02.164 VERB  [14876] Enabled q8_usb_0_AO
+2018-11-07 22:21:02.164 VERB  [14876] Enabled q8_usb_0_DI
+2018-11-07 22:21:02.164 VERB  [14876] Enabled q8_usb_0_DO
+2018-11-07 22:21:02.164 VERB  [14876] Enabled q8_usb_0_encoder
+2018-11-07 22:21:02.173 VERB  [14876] Enabled q8_usb_0
+2018-11-07 22:21:03.434 VERB  [14876] Enabled spar_glove
+2018-11-07 22:21:09.679 INFO  [13324] Logger 0 Initialized
+2018-11-07 22:21:09.906 VERB  [13324] Set q8_usb_0 options to: "update_rate=fast;decimation=1;"
+2018-11-07 22:21:09.906 VERB  [13324] Stopped watchdog on q8_usb_0
+2018-11-07 22:21:09.906 VERB  [13324] Cleared watchdog on q8_usb_0
+2018-11-07 22:21:09.906 VERB  [13324] Sanity check on q8_usb_0 passed
+2018-11-07 22:21:09.906 VERB  [13324] Set q8_usb_0_AO expire values to {[0]:0, [1]:0, [2]:0, [3]:0, [4]:0, [5]:0, [6]:0, [7]:0}
+2018-11-07 22:21:09.906 VERB  [13324] Set q8_usb_0_DO expire values to {[0]:0, [1]:0, [2]:0, [3]:0, [4]:0, [5]:0, [6]:0, [7]:0}
+2018-11-07 22:21:09.916 INFO  [13324] Opened DAQ q8_usb_0
+2018-11-07 22:21:09.917 VERB  [13324] Enabled q8_usb_0_AI
+2018-11-07 22:21:09.917 VERB  [13324] Enabled q8_usb_0_AO
+2018-11-07 22:21:09.917 VERB  [13324] Enabled q8_usb_0_DI
+2018-11-07 22:21:09.917 VERB  [13324] Enabled q8_usb_0_DO
+2018-11-07 22:21:09.917 VERB  [13324] Enabled q8_usb_0_encoder
+2018-11-07 22:21:09.927 VERB  [13324] Enabled q8_usb_0
+2018-11-07 22:21:10.445 VERB  [13324] Enabled spar_glove
+2018-11-07 22:21:33.805 INFO  [10684] Logger 0 Initialized
+2018-11-07 22:21:34.000 VERB  [10684] Set q8_usb_0 options to: "update_rate=fast;decimation=1;"
+2018-11-07 22:21:34.001 VERB  [10684] Stopped watchdog on q8_usb_0
+2018-11-07 22:21:34.001 VERB  [10684] Cleared watchdog on q8_usb_0
+2018-11-07 22:21:34.001 VERB  [10684] Sanity check on q8_usb_0 passed
+2018-11-07 22:21:34.001 VERB  [10684] Set q8_usb_0_AO expire values to {[0]:0, [1]:0, [2]:0, [3]:0, [4]:0, [5]:0, [6]:0, [7]:0}
+2018-11-07 22:21:34.001 VERB  [10684] Set q8_usb_0_DO expire values to {[0]:0, [1]:0, [2]:0, [3]:0, [4]:0, [5]:0, [6]:0, [7]:0}
+2018-11-07 22:21:34.011 INFO  [10684] Opened DAQ q8_usb_0
+2018-11-07 22:21:34.011 VERB  [10684] Enabled q8_usb_0_AI
+2018-11-07 22:21:34.011 VERB  [10684] Enabled q8_usb_0_AO
+2018-11-07 22:21:34.011 VERB  [10684] Enabled q8_usb_0_DI
+2018-11-07 22:21:34.011 VERB  [10684] Enabled q8_usb_0_DO
+2018-11-07 22:21:34.011 VERB  [10684] Enabled q8_usb_0_encoder
+2018-11-07 22:21:34.021 VERB  [10684] Enabled q8_usb_0
+2018-11-07 22:21:34.974 VERB  [10684] Enabled spar_glove

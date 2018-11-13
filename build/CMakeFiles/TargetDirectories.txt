@@ -1,0 +1,3 @@
+C:/Git/SparGlove/build/CMakeFiles/spar_glove.dir
+C:/Git/SparGlove/build/CMakeFiles/ALL_BUILD.dir
+C:/Git/SparGlove/build/CMakeFiles/ZERO_CHECK.dir

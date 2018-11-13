@@ -1,0 +1,14 @@
+2018-11-07 16:12:27.063 INFO  [7544] Logger 0 Initialized
+2018-11-07 16:12:27.552 VERB  [7544] Set q8_usb_0 options to: "update_rate=fast;decimation=1;"
+2018-11-07 16:12:27.553 VERB  [7544] Stopped watchdog on q8_usb_0
+2018-11-07 16:12:27.553 VERB  [7544] Cleared watchdog on q8_usb_0
+2018-11-07 16:12:27.554 VERB  [7544] Sanity check on q8_usb_0 passed
+2018-11-07 16:12:27.554 VERB  [7544] Set q8_usb_0_AO expire values to {[0]:0, [1]:0, [2]:0, [3]:0, [4]:0, [5]:0, [6]:0, [7]:0}
+2018-11-07 16:12:27.557 VERB  [7544] Set q8_usb_0_DO expire values to {[0]:0, [1]:0, [2]:0, [3]:0, [4]:0, [5]:0, [6]:0, [7]:0}
+2018-11-07 16:12:27.567 INFO  [7544] Opened DAQ q8_usb_0
+2018-11-07 16:12:27.569 VERB  [7544] Enabled q8_usb_0_AI
+2018-11-07 16:12:27.569 VERB  [7544] Enabled q8_usb_0_AO
+2018-11-07 16:12:27.570 VERB  [7544] Enabled q8_usb_0_DI
+2018-11-07 16:12:27.571 VERB  [7544] Enabled q8_usb_0_DO
+2018-11-07 16:12:27.571 VERB  [7544] Enabled q8_usb_0_encoder
+2018-11-07 16:12:27.582 VERB  [7544] Enabled q8_usb_0
