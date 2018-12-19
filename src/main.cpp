@@ -1,12 +1,21 @@
-#include <Spar_glove.hpp>
+#include <MEL/Math/Functions.hpp>
+#include <MEL/Core/Timer.hpp>
+#include <MEL/Mechatronics/PositionSensor.hpp>
+#include <MEL/Mechatronics/VelocitySensor.hpp>
+#include <MEL/Core/Console.hpp>
+#include <MEL/Logging/Log.hpp>
+#include "SparGlove.hpp"
+#include <MEL/Devices/Windows/Keyboard.hpp>
+#include "MYO_Classifier.hpp"
 
+using namespace mel;
 //==============================================================================
 // MISC
 //==============================================================================
 
 // create global stop variable CTRL-C handler function
 ctrl_bool stop(false);
-bool handler(CtrlEvent event) {
+bool handler1(CtrlEvent event) {
     if (event == CtrlEvent::CtrlC) {
         print("Ctrl+C Pressed!");
         stop = true;
@@ -14,29 +23,9 @@ bool handler(CtrlEvent event) {
     return true;
 }
 
-//==============================================================================
-// TUNNEL DEMO
-//==============================================================================
-
-Waveform tunnel_trajectory = Waveform(Waveform::Sin, seconds(2), 30.0 * DEG2RAD); //"Waveform" is a class, What is its use on either side of =?????????????????????????????
-PdController tunnel_pd     = PdController(1.0, 0.01);
-
-double tunnel(double position, double velocity, Time current_time) { //Seems to be less a tunnel than a path??????????????????????????????????????????
-    double x_ref = tunnel_trajectory.evaluate(current_time);
-    return tunnel_pd.calculate(x_ref, position, 0, velocity);
-}
-
-
-
-
-//==============================================================================
-// MAIN
-//==============================================================================
-
-int sharedVariable = 0;
-Mutex gMutex;
-
-int threadFunction() {
+/*
+//Thread function, open a thread class?
+int MYOClassifier() {
 	while (sharedVariable != 1) {
 		// mutex.lock()
 		// change the variables
@@ -44,45 +33,31 @@ int threadFunction() {
 	}
 	return 0;
 }
+*/
+
+//==============================================================================
+// MAIN
+//==============================================================================
 
 
-int main(int argc, char* argv[]) {
-
-	std::thread myThread(threadFunction);
-
-	// mutex.lock()
-	// change the variables
-	// mutex.unlock()
-
-
+int GloveDriver(int MYO) {
 
     // register CTRL-C handler
-    register_ctrl_handler(handler); 
+    register_ctrl_handler(handler1); 
+
+//	std::thread myThread(threadFunction);
 
     // make and parse console options
-    Options options("spar_glove.exe", "Spar Glove demo");
+    /*Options options("spar_glove.exe", "Spar Glove demo");
     options.add_options()
     	("o,home", "Homing")
-        ("h,help", "Prints this Help Message");
-    auto input = options.parse(argc, argv);
+        ("h,help", "Prints this Help Message");*/
+    //auto input = options.parse(argc, argv);
 
     // print help message if requested
-    if (input.count("h") > 0) {
-        print(options.help());
-        return 0;
-    }
-
-
-    // create Q8 USB
-    Q8Usb q8;
-    //q8.encoder.set_units_per_count(1/14155);
-    q8.open();
-
+   
     // create Spar Glove instance
-	Spar_glove sg(q8.DO[0], q8.AO[0], q8.AI[0], q8.encoder[0]);
-
-    // enable Q8 Usb
-    q8.enable();
+	SparGlove sg;
 
     // enable Spar Glove
     prompt("Press ENTER to enable SPAR Glove");
@@ -90,25 +65,27 @@ int main(int argc, char* argv[]) {
 
 	print("Enabled the Spar Glove");
 
-	MelShare ms("ms_position");
+	sg.experiment1(stop);
 
-    // create control loop timer
-    Timer timer(hertz(1000));
-
-    // enter control loop
-    prompt("Press ENTER to start control loop");
-    while (!stop) {
-
-        // update hardware
-        q8.update_input();        
-		
-		ms.write_data({ sg[0].get_position() });
-
-        q8.update_output();
-
-        // wait timer
-        timer.wait(); 
-    }
+	// disable spare glove
+	sg.disable();
 
     return 0;
+}
+
+
+int main() {
+	std::vector <std::string> v;
+	v = { "Fist_Training.csv"};
+
+
+	//SparGlove sg;
+
+	//sg.enable();
+
+	MYOClassifier mc = MYOClassifier(v);
+
+	//sg.Intent_Detection(pred_label)
+
+	return 0;
 }

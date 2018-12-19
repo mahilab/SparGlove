@@ -39,7 +39,10 @@ namespace mel {
 		: daq_(daq),
 		watchdog_(watchdog),
 		encoder_channels_(encoder_channels),
-		amplifiers_(amplifiers) {}
+		amplifiers_(amplifiers) 
+	{
+	
+	}
 
 }  // namespace mel
 
