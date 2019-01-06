@@ -83,8 +83,10 @@ private:
 	CSVRow              m_row;
 };
 
-MYOClassifier::MYOClassifier(std::vector<std::string> training_files) {
+MYOClassifier::MYOClassifier(std::vector<std::string> training_files, SparGlove sg) {
 	
+	std::cout << sg.enable() << std::endl;
+
 	// handle inputs
 	std::vector<uint32> emg_channel_numbers = { 0,1,2,3,4,5,6,7 };
 
@@ -147,7 +149,12 @@ MYOClassifier::MYOClassifier(std::vector<std::string> training_files) {
 	print("Press 'S' to stop the OpenWrist");
 	print("Press 'Escape' to exit.");
 
-	std::cout << mes_active_capture_window_size << std::endl;
+	std::cout << "MYO_Classifier thinks pred_label is" << std::endl;
+
+	std::cout << pred_label << std::endl;
+
+
+	//std::cout << mes_active_capture_window_size << std::endl;
 
 	int pose = 0;
 
@@ -200,6 +207,10 @@ MYOClassifier::MYOClassifier(std::vector<std::string> training_files) {
 		// predict state
 		if (dir_classifier.update(mes.get_demean())) {
 			pred_label = dir_classifier.get_class();
+			sg.notify(pred_label);
+			std::cout << "MYO_Classifier thinks pred_label is" << std::endl;
+
+			std::cout << pred_label << std::endl;
 
 			//std::cout << "We've made a prediction!" << std::endl;
 		}
@@ -238,6 +249,9 @@ MYOClassifier::MYOClassifier(std::vector<std::string> training_files) {
 				}
 				keypress_refract_clock.restart();
 			}
+			std::cout << "MYO_Classifier thinks pred_label is" << std::endl;
+
+			std::cout << pred_label << std::endl;
 		}
 
 		if (Keyboard::is_key_pressed(Key::U)) {
@@ -262,7 +276,7 @@ MYOClassifier::MYOClassifier(std::vector<std::string> training_files) {
 							classification_set.push_back(row);
 						}
 						//dir_classifier.add_training_data(pose, classification_set);
-
+						/*
 						std::cout << classification_set.size() << std::endl;
 
 						Butterworth filter(8, hertz(1000), .05);
@@ -278,8 +292,8 @@ MYOClassifier::MYOClassifier(std::vector<std::string> training_files) {
 							int bucket = dir_classifier.get_class();
 							std::cout << bucket << std::endl;
 
-							std::cout << "We've made a prediction!" << std::endl;
-						}
+							std::cout << "We've made a prediction!" << std::endl; 
+						}*/
 
 			}
 			else
@@ -377,6 +391,9 @@ MYOClassifier::MYOClassifier(std::vector<std::string> training_files) {
 		ms_mes_env.write_data(mes.get_envelope());
 		ms_mes_dm.write_data(mes.get_demean());
 		ms_pred_label.write_data({ (double)((signed)(pred_label + 1)) });
+
+
+
 
 		// check limits
 		//if (ow.any_limit_exceeded()) {

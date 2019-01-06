@@ -97,26 +97,38 @@ SparGlove::~SparGlove() {
 		disable();
 }
 
-void SparGlove::Intent_Detection(std::size_t pred_label) {
-	std::cout << pred_label << std::endl;
+void SparGlove::notify(std::size_t pred_label) {
+	//Functions that need to know about pred_label
+	//Experiment1
+	experiment1(std::atomic_bool( false ), pred_label);
+
+	//GloveDriver
 }
 
+void SparGlove::experiment1(std::atomic<bool>& stop, size_t pred_label) {
 
-void SparGlove::experiment1(volatile std::atomic<bool>& stop) {
+	//q8_.enable();
 
 	// create control loop timer
 	Timer timer(hertz(1000));
 	
 	MelShare ms("motor_position");
 	std::vector<double> to_ms_data(4);
-
+	
 	// enter control loop
 	prompt("Press ENTER to start control loop");
 	while (!stop) {
 		
+
+		std::cout << "But SparGlove thinks pred_label is" << std::endl;
+
+		//Prove that we can see pred_label
+		std::cout << pred_label << std::endl;
+
 		// update hardware
 		q8_.update_input();
-		
+
+
 		//	std::array<double, 7> sat_torques = { 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0 }; // temporary saturation torques
 		double sat = 0.1;
 
@@ -153,17 +165,23 @@ void SparGlove::experiment1(volatile std::atomic<bool>& stop) {
 
 /// Overrides the default Robot::enable function with some custom logic
 bool SparGlove::on_enable() {
+	std::cout << "SparGlove is TOO enabled" << std::endl;
+	q8_.open();
+	mel::prompt("Press ENTER to open and enable Q8 USB.");
+	q8_.enable();
+	return true;
 
-	if (q8_.open() && q8_.enable() && Robot::on_enable()) {
-		for (int i = 0; i < 8; i++) {
-			q8_.DO[i].set_disable_value(High);
-			q8_.DO[i].set_expire_value(High);
-		}
 
-		return true;
-	}
-	else
-		return false;	
+	//if (q8_.open() && q8_.enable()){// && Robot::on_enable()) {
+	//	for (int i = 0; i < 8; i++) {
+	//		q8_.DO[i].set_disable_value(High);
+	//		q8_.DO[i].set_expire_value(High);
+	//	}
+
+	//	return true;
+	//}
+	//else
+	//	return false;	
 }
 
 /// Overrides the default Robot::enable function with some custom logic

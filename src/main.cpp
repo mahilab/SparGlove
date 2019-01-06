@@ -65,7 +65,7 @@ int GloveDriver(int MYO) {
 
 	print("Enabled the Spar Glove");
 
-	sg.experiment1(stop);
+	//sg.experiment1(stop);
 
 	// disable spare glove
 	sg.disable();
@@ -76,16 +76,13 @@ int GloveDriver(int MYO) {
 
 int main() {
 	std::vector <std::string> v;
-	v = { "Fist_Training.csv"};
+	v = { "Fist_Training.csv", };
 
-
-	//SparGlove sg;
+	SparGlove sg;
 
 	//sg.enable();
 
-	MYOClassifier mc = MYOClassifier(v);
-
-	//sg.Intent_Detection(pred_label)
+	MYOClassifier mc = MYOClassifier(v, sg);
 
 	return 0;
 }
