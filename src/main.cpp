@@ -8,6 +8,9 @@
 #include <MEL/Devices/Windows/Keyboard.hpp>
 #include "MYO_Classifier.hpp"
 
+
+
+
 using namespace mel;
 //==============================================================================
 // MISC
@@ -45,7 +48,7 @@ int GloveDriver(int MYO) {
     // register CTRL-C handler
     register_ctrl_handler(handler1); 
 
-//	std::thread myThread(threadFunction);
+
 
     // make and parse console options
     /*Options options("spar_glove.exe", "Spar Glove demo");
@@ -73,10 +76,13 @@ int GloveDriver(int MYO) {
     return 0;
 }
 
+//	std::thread myThread(threadFunction);
+//std::thread IntentDetection(MYOClassifier);
+
 
 int main() {
 	std::vector <std::string> v;
-	v = { "Fist_Training.csv", };
+	v = { "Fist_Training.csv", "PointTraining.csv", "FakeButtonTraining.csv", "FakeCylinderTraining.csv", "FakeExtensionTraining.csv", "FakeOKTraining.csv", "FakeThumbOppoTraining.csv" };
 
 	SparGlove sg;
 

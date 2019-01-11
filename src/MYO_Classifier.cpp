@@ -83,7 +83,7 @@ private:
 	CSVRow              m_row;
 };
 
-MYOClassifier::MYOClassifier(std::vector<std::string> training_files, SparGlove sg) {
+MYOClassifier::MYOClassifier(std::vector<std::string> training_files, SparGlove& sg) {
 	
 	std::cout << sg.enable() << std::endl;
 
@@ -138,16 +138,6 @@ MYOClassifier::MYOClassifier(std::vector<std::string> training_files, SparGlove 
 	// construct timer in hybrid mode to avoid using 100% CPU
 	Timer timer(Ts, Timer::Hybrid);
 
-	// prompt the user for input
-	print("Press 'A + target #' to add training data for one target.");
-	print("Press 'C + target #' to clear training data for one target.");
-	print("Number of targets/classes is:");
-	print(num_classes);
-	print("Press 'T' to train classifier and begin real-time classification.");
-	print("Press 'U' to use the classifier on a pre-existing data file");
-	print("Press 'R' to run the OpenWrist");
-	print("Press 'S' to stop the OpenWrist");
-	print("Press 'Escape' to exit.");
 
 	std::cout << "MYO_Classifier thinks pred_label is" << std::endl;
 
@@ -186,6 +176,17 @@ MYOClassifier::MYOClassifier(std::vector<std::string> training_files, SparGlove 
 		
 	}
 
+	// prompt the user for input
+	print("Press 'A + target #' to add training data for one target.");
+	print("Press 'C + target #' to clear training data for one target.");
+	print("Number of targets/classes is:");
+	print(num_classes);
+	print("Press 'T' to train classifier and begin real-time classification.");
+	print("Press 'U' to use the classifier on a pre-existing data file");
+	print("Press 'R' to run the OpenWrist");
+	print("Press 'S' to stop the OpenWrist");
+	print("Press 'Escape' to exit.");
+
 	// enable hardware
 	//q8.enable();
 	//ow.enable();
@@ -193,7 +194,9 @@ MYOClassifier::MYOClassifier(std::vector<std::string> training_files, SparGlove 
 	myo.enable();
 
 	while (!ctrlc) {
+		//counter = counter + 1;
 
+		//std::cout << counter << std::endl;
 		// update hardware
 		//q8.watchdog.kick();
 		//q8.update_input();
@@ -203,16 +206,18 @@ MYOClassifier::MYOClassifier(std::vector<std::string> training_files, SparGlove 
 
 		// emg signal processing
 		mes.update_and_buffer();
-
+		
 		// predict state
 		if (dir_classifier.update(mes.get_demean())) {
 			pred_label = dir_classifier.get_class();
 			sg.notify(pred_label);
 			std::cout << "MYO_Classifier thinks pred_label is" << std::endl;
 
-			std::cout << pred_label << std::endl;
+			std::cout << dir_classifier.get_class() << std::endl;
 
-			//std::cout << "We've made a prediction!" << std::endl;
+	//		std::cout << "Counter is " << std::endl;
+
+		//	std::cout << counter	<< std::endl;
 		}
 
 		// clear active data
@@ -249,9 +254,7 @@ MYOClassifier::MYOClassifier(std::vector<std::string> training_files, SparGlove 
 				}
 				keypress_refract_clock.restart();
 			}
-			std::cout << "MYO_Classifier thinks pred_label is" << std::endl;
-
-			std::cout << pred_label << std::endl;
+			
 		}
 
 		if (Keyboard::is_key_pressed(Key::U)) {

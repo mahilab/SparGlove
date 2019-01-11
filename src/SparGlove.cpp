@@ -1,7 +1,5 @@
 #include "SparGlove.hpp"
 
-
-
 SparGlove::SparGlove() :
 	
 	Robot("spar_glove"),
@@ -70,6 +68,7 @@ SparGlove::SparGlove() :
 		);
 		add_joint(joint);
 	}	
+	
 }
 
 SparGlove::SparGlove(const SparGlove&):
@@ -97,15 +96,90 @@ SparGlove::~SparGlove() {
 		disable();
 }
 
-void SparGlove::notify(std::size_t pred_label) {
+void SparGlove::set_pred_label(size_t pose) {
+	{
+		mel::Lock lock(mtx);
+
+	}
+	
+	mtx.lock();
+	pred_label = pose;
+	mtx.unlock();
+}
+
+size_t SparGlove::get_pred_label() {
+	mtx.lock();
+	size_t result = pred_label;
+	mtx.unlock();
+	return result;
+}
+
+void SparGlove::notify(const std::size_t pose) {
 	//Functions that need to know about pred_label
 	//Experiment1
-	experiment1(std::atomic_bool( false ), pred_label);
-
+	//experiment1(std::atomic_bool( false ), pred_label);
+	set_pred_label(pose);
 	//GloveDriver
 }
 
-void SparGlove::experiment1(std::atomic<bool>& stop, size_t pred_label) {
+void SparGlove::start() {
+	Timer timer(hertz(1000));
+
+	MelShare ms("motor_position");
+	std::vector<double> to_ms_data(4);
+
+	// enter control loop
+	prompt("Press ENTER to start control loop");
+	while (true) {
+
+		//std::cout << "MYO_Classifier thinks pred_label is" << std::endl;
+
+		//std::cout << pred_label << std::endl;
+
+		std::cout << "But SparGlove thinks pred_label is" << std::endl;
+
+		////Prove that we can see pred_label
+		std::cout << get_pred_label() << std::endl;
+
+		// update hardware
+		q8_.update_input();
+
+
+		//	std::array<double, 7> sat_torques = { 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0 }; // temporary saturation torques
+		double sat = 0.1;
+
+		// experiment 1 code
+		double pos_ref = get_joint(1).get_position();
+		double pos_act = get_joint(0).get_position();
+		double vel_act = get_joint(0).get_velocity();
+		double torque2 = pd_controllers_[0].calculate(pos_ref, pos_act, 0, vel_act);
+		double torque = 0.05;
+		double nothing = 0.0;
+		torque = saturate(torque, sat);
+		torque2 = saturate(torque2, sat);
+
+		get_joint(3).set_torque(torque);
+		get_joint(0).set_torque(nothing);
+
+		to_ms_data[0] = pos_ref;
+		to_ms_data[1] = pos_act;
+		to_ms_data[2] = nothing;  // vel_act;
+		to_ms_data[3] = torque2;
+
+		ms.write_data(to_ms_data);
+
+		//ms.write_data({ get_joint(0).get_position() });
+		//ms.write_data({ get_joint(1).get_position() });
+
+		// update output
+		q8_.update_output();
+
+		// wait timer
+		timer.wait();
+	}
+};
+
+void SparGlove::experiment1(std::atomic<bool>& stop, const size_t& pred_label) {
 
 	//q8_.enable();
 
@@ -119,10 +193,15 @@ void SparGlove::experiment1(std::atomic<bool>& stop, size_t pred_label) {
 	prompt("Press ENTER to start control loop");
 	while (!stop) {
 		
+		//std::cout << "MYO_Classifier thinks pred_label is" << std::endl;
+
+		//std::cout << pred_label << std::endl;
+
+
 
 		std::cout << "But SparGlove thinks pred_label is" << std::endl;
 
-		//Prove that we can see pred_label
+		////Prove that we can see pred_label
 		std::cout << pred_label << std::endl;
 
 		// update hardware
@@ -169,6 +248,9 @@ bool SparGlove::on_enable() {
 	q8_.open();
 	mel::prompt("Press ENTER to open and enable Q8 USB.");
 	q8_.enable();
+
+	std::thread first(&SparGlove::start, this);
+
 	return true;
 
 
