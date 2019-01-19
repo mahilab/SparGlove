@@ -93,25 +93,27 @@ SparGlove::SparGlove(const SparGlove&):
 
 SparGlove::~SparGlove() {
 	if (is_enabled())
+		get_joint(0).set_torque(0.0);
 		disable();
 }
 
-void SparGlove::set_pred_label(size_t pose) {
-	{
-		mel::Lock lock(mtx);
-
-	}
+void SparGlove::set_pred_label(const std::size_t pose) {
 	
-	mtx.lock();
-	pred_label = pose;
-	mtx.unlock();
+	mel::Lock lock(mtx);
+		
+	//mtx.lock();
+	this->pred_label = pose;
+	//mtx.unlock();
 }
 
 size_t SparGlove::get_pred_label() {
-	mtx.lock();
-	size_t result = pred_label;
-	mtx.unlock();
+	mel::Lock lock(mtx);
+
+	//mtx.lock();
+	std::size_t result = this->pred_label;
+	//mtx.unlock();
 	return result;
+	//return 0;
 }
 
 void SparGlove::notify(const std::size_t pose) {
@@ -129,37 +131,69 @@ void SparGlove::start() {
 	std::vector<double> to_ms_data(4);
 
 	// enter control loop
-	prompt("Press ENTER to start control loop");
+	//prompt("Press ENTER ldskfsldfjdto start control loop");
+	
+	
 	while (true) {
+		
+		MelShare Spar_pred_label("Spar_pred_label");
+		Spar_pred_label.write_data({ (double)((signed)(get_pred_label())) });
+		//{
+			//Lock lock(mtx);
+		//	std::cout << "But SparGlove thinks pred_label is" << std::endl;
 
+			////Prove that we can see pred_label
+
+		//	std::cout << get_pred_label() << std::endl;
+
+			//	print("SparGlove Main loop");
+		//}
 		//std::cout << "MYO_Classifier thinks pred_label is" << std::endl;
 
 		//std::cout << pred_label << std::endl;
 
-		std::cout << "But SparGlove thinks pred_label is" << std::endl;
-
-		////Prove that we can see pred_label
-		std::cout << get_pred_label() << std::endl;
-
+		
 		// update hardware
 		q8_.update_input();
+		
+		double torque = 1.0;
 
+		switch (get_pred_label()) {
+		case (size_t)0:
+			torque = 0.0;
+		case (size_t)1:
+			torque = 0.1;
+		case (size_t)2:
+			torque = 0.2;
+		case (size_t)3:
+			torque = 0.3;
+		case (size_t)4:
+			torque = 0.4;
+		case (size_t)5:
+			torque = 0.5;
+		case (size_t)6:
+			torque = 0.6;
+
+		default:
+			torque = 0.9;
+
+		}
 
 		//	std::array<double, 7> sat_torques = { 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0 }; // temporary saturation torques
-		double sat = 0.1;
+		double sat = 5.0;
 
 		// experiment 1 code
 		double pos_ref = get_joint(1).get_position();
 		double pos_act = get_joint(0).get_position();
 		double vel_act = get_joint(0).get_velocity();
 		double torque2 = pd_controllers_[0].calculate(pos_ref, pos_act, 0, vel_act);
-		double torque = 0.05;
+		
 		double nothing = 0.0;
-		torque = saturate(torque, sat);
+//		torque = saturate(torque, sat);
 		torque2 = saturate(torque2, sat);
 
 		get_joint(3).set_torque(torque);
-		get_joint(0).set_torque(nothing);
+		get_joint(0).set_torque(torque);
 
 		to_ms_data[0] = pos_ref;
 		to_ms_data[1] = pos_act;
@@ -174,6 +208,7 @@ void SparGlove::start() {
 		// update output
 		q8_.update_output();
 
+		
 		// wait timer
 		timer.wait();
 	}
@@ -250,6 +285,7 @@ bool SparGlove::on_enable() {
 	q8_.enable();
 
 	std::thread first(&SparGlove::start, this);
+	first.detach();
 
 	return true;
 
@@ -268,6 +304,8 @@ bool SparGlove::on_enable() {
 
 /// Overrides the default Robot::enable function with some custom logic
 bool SparGlove::on_disable() {
+
+
 	if (Robot::on_disable() && q8_.disable() && q8_.close())
 		return true;
 	else

@@ -82,7 +82,7 @@ int GloveDriver(int MYO) {
 
 int main() {
 	std::vector <std::string> v;
-	v = { "Fist_Training.csv", "PointTraining.csv", "FakeButtonTraining.csv", "FakeCylinderTraining.csv", "FakeExtensionTraining.csv", "FakeOKTraining.csv", "FakeThumbOppoTraining.csv" };
+	v = { "Fist_Training.csv" , "PointTraining.csv", "ButtonTraining.csv", "ExtensionTraining.csv", "OKTraining.csv", "ThumbOppoTraining.csv"};
 
 	SparGlove sg;
 

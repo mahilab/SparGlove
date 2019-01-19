@@ -85,7 +85,7 @@ private:
 
 MYOClassifier::MYOClassifier(std::vector<std::string> training_files, SparGlove& sg) {
 	
-	std::cout << sg.enable() << std::endl;
+	
 
 	// handle inputs
 	std::vector<uint32> emg_channel_numbers = { 0,1,2,3,4,5,6,7 };
@@ -138,10 +138,13 @@ MYOClassifier::MYOClassifier(std::vector<std::string> training_files, SparGlove&
 	// construct timer in hybrid mode to avoid using 100% CPU
 	Timer timer(Ts, Timer::Hybrid);
 
-
-	std::cout << "MYO_Classifier thinks pred_label is" << std::endl;
-
-	std::cout << pred_label << std::endl;
+	//{
+	//	Lock lock(sg.mtx);
+	//	std::cout << "MYO_Classifier thinks pred_label is" << std::endl;
+//
+//		std::cout << pred_label << std::endl;
+//	}
+	
 
 
 	//std::cout << mes_active_capture_window_size << std::endl;
@@ -192,6 +195,7 @@ MYOClassifier::MYOClassifier(std::vector<std::string> training_files, SparGlove&
 	//ow.enable();
 	//q8.watchdog.start();
 	myo.enable();
+	sg.enable();
 
 	while (!ctrlc) {
 		//counter = counter + 1;
@@ -200,7 +204,13 @@ MYOClassifier::MYOClassifier(std::vector<std::string> training_files, SparGlove&
 		// update hardware
 		//q8.watchdog.kick();
 		//q8.update_input();
-
+		
+		{
+			Lock lock(sg.mtx);
+//			print("MYOClassifier Main loop");
+		}
+//		std::cout << "Got to the main loop" << std::endl;
+		
 		// update all DAQ input channels
 		myo.update();
 
@@ -211,9 +221,9 @@ MYOClassifier::MYOClassifier(std::vector<std::string> training_files, SparGlove&
 		if (dir_classifier.update(mes.get_demean())) {
 			pred_label = dir_classifier.get_class();
 			sg.notify(pred_label);
-			std::cout << "MYO_Classifier thinks pred_label is" << std::endl;
+			//std::cout << "MYO_Classifier thinks pred_label is" << std::endl;
 
-			std::cout << dir_classifier.get_class() << std::endl;
+			//std::cout << dir_classifier.get_class() << std::endl;
 
 	//		std::cout << "Counter is " << std::endl;
 
