@@ -2,11 +2,11 @@
 using namespace mel;
 using namespace meii;
 
-ctrl_bool ctrlc(false);
-bool handler(CtrlEvent event) {
-	ctrlc = true;
-	return true;
-}
+//ctrl_bool ctrlc(false);
+//bool handler(CtrlEvent event) {
+//	ctrlc = true;
+//	return true;
+//}
 
 //ctrl_bool cancel(false);
 //bool handler(CtrlEvent event) {
@@ -96,7 +96,7 @@ MYOClassifier::MYOClassifier(std::vector<std::string> training_files, SparGlove&
 	//mel::init_logger(mel::Verbose);
 
 	// register ctrl-c handler
-	register_ctrl_handler(handler);
+	//register_ctrl_handler(handler);
 
 	// construct array of Myoelectric Signals
 	MesArray mes(myo.get_channels(emg_channel_numbers));
@@ -197,7 +197,7 @@ MYOClassifier::MYOClassifier(std::vector<std::string> training_files, SparGlove&
 	myo.enable();
 	sg.enable();
 
-	while (!ctrlc) {
+	while (true) {
 		//counter = counter + 1;
 
 		//std::cout << counter << std::endl;
@@ -415,7 +415,7 @@ MYOClassifier::MYOClassifier(std::vector<std::string> training_files, SparGlove&
 
 		// check for exit key
 		if (Keyboard::is_key_pressed(Key::Escape)) {
-			ctrlc = true;
+			//ctrlc = true;
 		}
 
 		// update hardware

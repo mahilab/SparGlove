@@ -1,4 +1,15 @@
 #include "SparGlove.hpp"
+#include <MEL/Devices/Windows/Keyboard.hpp>
+
+ctrl_bool g_stop(false);
+bool handler1(CtrlEvent event) {
+	if (event == CtrlEvent::CtrlC) {
+		print("Ctrl+C Pressed!");
+		g_stop = true;
+	}
+	return true;
+}
+
 
 SparGlove::SparGlove() :
 	
@@ -88,6 +99,7 @@ SparGlove::SparGlove(const SparGlove&):
 	pd_controllers_(7),
 	encoders_(7)
 {
+	register_ctrl_handler(handler1);
 
 }
 
@@ -133,11 +145,14 @@ void SparGlove::start() {
 	// enter control loop
 	//prompt("Press ENTER ldskfsldfjdto start control loop");
 	
-	
-	while (true) {
+	q8_.watchdog.set_timeout(milliseconds(100));
+
+	q8_.watchdog.start();
+
+	while (!g_stop && !Keyboard::is_key_pressed(Key::Escape)) {
 		
-		MelShare Spar_pred_label("Spar_pred_label");
-		Spar_pred_label.write_data({ (double)((signed)(get_pred_label())) });
+		//MelShare Spar_pred1_label("Spar_pred2_label");
+		//Spar_pred1_label.write_data({ (double)((signed)(get_pred_label())) });
 		//{
 			//Lock lock(mtx);
 		//	std::cout << "But SparGlove thinks pred_label is" << std::endl;
@@ -155,24 +170,33 @@ void SparGlove::start() {
 		
 		// update hardware
 		q8_.update_input();
-		
+		q8_.watchdog.kick();
+
+
 		double torque = 1.0;
 
 		switch (get_pred_label()) {
 		case (size_t)0:
 			torque = 0.0;
+			break;
 		case (size_t)1:
 			torque = 0.1;
+			break;
 		case (size_t)2:
 			torque = 0.2;
+			break;
 		case (size_t)3:
 			torque = 0.3;
+			break;
 		case (size_t)4:
 			torque = 0.4;
+			break;
 		case (size_t)5:
 			torque = 0.5;
+			break;
 		case (size_t)6:
 			torque = 0.6;
+			break;
 
 		default:
 			torque = 0.9;
@@ -212,8 +236,9 @@ void SparGlove::start() {
 		// wait timer
 		timer.wait();
 	}
+	print("STARTED ENDED!!");
 };
-
+/*
 void SparGlove::experiment1(std::atomic<bool>& stop, const size_t& pred_label) {
 
 	//q8_.enable();
@@ -276,12 +301,15 @@ void SparGlove::experiment1(std::atomic<bool>& stop, const size_t& pred_label) {
 		timer.wait();
 	}
 }
-
+*/
 /// Overrides the default Robot::enable function with some custom logic
 bool SparGlove::on_enable() {
 	std::cout << "SparGlove is TOO enabled" << std::endl;
 	q8_.open();
 	mel::prompt("Press ENTER to open and enable Q8 USB.");
+	q8_.AO.set_disable_values(std::vector<Voltage>(8, 0.0)); // default is 0.0
+	q8_.AO.set_expire_values(std::vector<Voltage>(8, 0.0));  // default is 0.0
+
 	q8_.enable();
 
 	std::thread first(&SparGlove::start, this);
@@ -307,7 +335,11 @@ bool SparGlove::on_disable() {
 
 
 	if (Robot::on_disable() && q8_.disable() && q8_.close())
+	{
+		
+
 		return true;
+	}
 	else
 		return false;
 

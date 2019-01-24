@@ -17,14 +17,7 @@ using namespace mel;
 //==============================================================================
 
 // create global stop variable CTRL-C handler function
-ctrl_bool stop(false);
-bool handler1(CtrlEvent event) {
-    if (event == CtrlEvent::CtrlC) {
-        print("Ctrl+C Pressed!");
-        stop = true;
-    }
-    return true;
-}
+
 
 /*
 //Thread function, open a thread class?
@@ -46,8 +39,7 @@ int MYOClassifier() {
 int GloveDriver(int MYO) {
 
     // register CTRL-C handler
-    register_ctrl_handler(handler1); 
-
+   
 
 
     // make and parse console options
@@ -90,5 +82,33 @@ int main() {
 
 	MYOClassifier mc = MYOClassifier(v, sg);
 
+	return 0;
+}
+
+int main2() {
+	Q8Usb q8;
+	q8.open();
+	q8.AO.set_disable_values(std::vector<Voltage>(8, 0.0)); // default is 0.0
+	q8.AO.set_expire_values(std::vector<Voltage>(8, 0.0));  // default is 0.0
+	q8.enable();
+
+	q8.AO[0].set_value(0.9);
+
+	Timer timer(hertz(1000));
+
+	q8.watchdog.set_timeout(milliseconds(100));
+	q8.watchdog.start();
+
+	while (true) {
+		q8.update_input();
+		q8.watchdog.kick();
+		if (Keyboard::is_key_pressed(Key::Space))
+			break;
+		q8.update_output();
+		timer.wait();
+	}
+
+	q8.disable();
+	q8.close();
 	return 0;
 }
