@@ -39,9 +39,6 @@ int MYOClassifier() {
 int GloveDriver(int MYO) {
 
     // register CTRL-C handler
-   
-
-
     // make and parse console options
     /*Options options("spar_glove.exe", "Spar Glove demo");
     options.add_options()
@@ -72,9 +69,23 @@ int GloveDriver(int MYO) {
 //std::thread IntentDetection(MYOClassifier);
 
 
+int main1() {
+	std::vector <std::string> v;
+	v = { "Fist_Training.csv" , "PointTraining.csv", "ButtonTraining.csv", "ExtensionTraining.csv", "OKTraining.csv", "ThumbOppoTraining.csv" };
+
+	SparGlove sg;
+
+	sg.on_enable();
+	//sg.start_turning();
+	sg.start_myo();
+
+	return 0;
+
+}
+
 int main() {
 	std::vector <std::string> v;
-	v = { "Fist_Training.csv" , "PointTraining.csv", "ButtonTraining.csv", "ExtensionTraining.csv", "OKTraining.csv", "ThumbOppoTraining.csv"};
+	v = { "SCI_Fist_Training.csv" , "PointTraining.csv", "ButtonTraining.csv", "ExtensionTraining.csv", "OKTraining.csv", "ThumbOppoTraining.csv"};
 
 	SparGlove sg;
 
