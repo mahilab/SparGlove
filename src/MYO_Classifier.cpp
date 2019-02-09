@@ -83,7 +83,7 @@ private:
 	CSVRow              m_row;
 };
 
-MYOClassifier::MYOClassifier(std::vector<std::string> training_files, SparGlove& sg) {
+MYOClassifier::MYOClassifier(std::vector<std::string> training_files) { //, SparGlove& sg) {
 	
 	
 
@@ -195,7 +195,7 @@ MYOClassifier::MYOClassifier(std::vector<std::string> training_files, SparGlove&
 	//ow.enable();
 	//q8.watchdog.start();
 	myo.enable();
-	sg.enable();
+	//sg.enable();
 
 	while (true) {
 		//counter = counter + 1;
@@ -205,10 +205,10 @@ MYOClassifier::MYOClassifier(std::vector<std::string> training_files, SparGlove&
 		//q8.watchdog.kick();
 		//q8.update_input();
 		
-		{
-			Lock lock(sg.mtx);
-//			print("MYOClassifier Main loop");
-		}
+//		{
+//			Lock lock(sg.mtx);
+////			print("MYOClassifier Main loop");
+//		}
 //		std::cout << "Got to the main loop" << std::endl;
 		
 		// update all DAQ input channels
@@ -220,7 +220,7 @@ MYOClassifier::MYOClassifier(std::vector<std::string> training_files, SparGlove&
 		// predict state
 		if (dir_classifier.update(mes.get_demean())) {
 			pred_label = dir_classifier.get_class();
-			sg.notify(pred_label);
+			//sg.notify(pred_label);
 			//std::cout << "MYO_Classifier thinks pred_label is" << std::endl;
 
 			//std::cout << dir_classifier.get_class() << std::endl;
@@ -275,7 +275,7 @@ MYOClassifier::MYOClassifier(std::vector<std::string> training_files, SparGlove&
 				std::getline(std::cin, file_to_parse);
 			
 				//for (std::vector<std::string>::iterator it = file_to_parse.begin(); it != file_to_parse.end(); ++it) {
-					int*** training_data = Parse(file_to_parse);
+					int*** classy_data = Parse(file_to_parse);
 
 						std::vector<std::vector<double>> classification_set;
 
@@ -284,11 +284,16 @@ MYOClassifier::MYOClassifier(std::vector<std::string> training_files, SparGlove&
 
 							for (int m = 0; m < 8; m++) {
 
-								row.push_back(training_data[0][L][m]);  //converts integers in input file to double precision which RealTimeClassifier expects
+								row.push_back(classy_data[0][L][m]);  //converts integers in input file to double precision which RealTimeClassifier expects
 							}
-							classification_set.push_back(row);
+							//classification_set.push_back(row);
+							dir_classifier.update(row);
 						}
-						//dir_classifier.add_training_data(pose, classification_set);
+
+
+						//dir_classifier.update(classification_set); //needs a for loop to add each row of the classification set as a live stream.  This should match what "update" is looking for
+						pred_label = dir_classifier.get_class();
+
 						/*
 						std::cout << classification_set.size() << std::endl;
 
@@ -299,14 +304,14 @@ MYOClassifier::MYOClassifier(std::vector<std::string> training_files, SparGlove&
 						for (int i = 0; i < 200; i++) {
 							butt_class[i] = filter.update(classification_set[1][i]);
 						}
-
-						if (dir_classifier.update(butt_class)) {
+*/
+	//					if (dir_classifier.update(butt_class)) {
 							std::cout << "And the winner is..." << std::endl;
-							int bucket = dir_classifier.get_class();
-							std::cout << bucket << std::endl;
+							//int bucket = dir_classifier.get_class();
+							std::cout << pred_label << std::endl;
 
 							std::cout << "We've made a prediction!" << std::endl; 
-						}*/
+		//				}*/
 
 			}
 			else

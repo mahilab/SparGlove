@@ -22,12 +22,12 @@ using namespace mel;
 /*
 //Thread function, open a thread class?
 int MYOClassifier() {
-	while (sharedVariable != 1) {
-		// mutex.lock()
-		// change the variables
-		// mutex.unlock()
-	}
-	return 0;
+while (sharedVariable != 1) {
+// mutex.lock()
+// change the variables
+// mutex.unlock()
+}
+return 0;
 }
 */
 
@@ -38,22 +38,22 @@ int MYOClassifier() {
 
 int GloveDriver(int MYO) {
 
-    // register CTRL-C handler
-    // make and parse console options
-    /*Options options("spar_glove.exe", "Spar Glove demo");
-    options.add_options()
-    	("o,home", "Homing")
-        ("h,help", "Prints this Help Message");*/
-    //auto input = options.parse(argc, argv);
+	// register CTRL-C handler
+	// make and parse console options
+	/*Options options("spar_glove.exe", "Spar Glove demo");
+	options.add_options()
+	("o,home", "Homing")
+	("h,help", "Prints this Help Message");*/
+	//auto input = options.parse(argc, argv);
 
-    // print help message if requested
-   
-    // create Spar Glove instance
+	// print help message if requested
+
+	// create Spar Glove instance
 	SparGlove sg;
 
-    // enable Spar Glove
-    prompt("Press ENTER to enable SPAR Glove");
-    sg.enable();
+	// enable Spar Glove
+	prompt("Press ENTER to enable SPAR Glove");
+	sg.enable();
 
 	print("Enabled the Spar Glove");
 
@@ -62,7 +62,7 @@ int GloveDriver(int MYO) {
 	// disable spare glove
 	sg.disable();
 
-    return 0;
+	return 0;
 }
 
 //	std::thread myThread(threadFunction);
@@ -71,13 +71,18 @@ int GloveDriver(int MYO) {
 
 int main1() {
 	std::vector <std::string> v;
-	v = { "Fist_Training.csv" , "PointTraining.csv", "ButtonTraining.csv", "ExtensionTraining.csv", "OKTraining.csv", "ThumbOppoTraining.csv" };
+	v = {};// "Fist_Training.csv", "PointTraining.csv", "ButtonTraining.csv", "ExtensionTraining.csv", "OKTraining.csv", "ThumbOppoTraining.csv"};
 
+	//MYOClassifier mc = MYOClassifier(v);
 	SparGlove sg;
 
 	sg.on_enable();
-	//sg.start_turning();
+	sg.zero_encoders();
+
+	sg.on_enable();
 	sg.start_myo();
+	//sg.start_turning();
+	
 
 	return 0;
 
@@ -85,13 +90,13 @@ int main1() {
 
 int main() {
 	std::vector <std::string> v;
-	v = { "SCI_Fist_Training.csv" , "PointTraining.csv", "ButtonTraining.csv", "ExtensionTraining.csv", "OKTraining.csv", "ThumbOppoTraining.csv"};
+	v = { "PointTraining.csv", "ButtonTraining.csv", "ExtensionTraining.csv", "SCI_Fist_Training.csv" , "OKTraining.csv", "ThumbOppoTraining.csv", "ThumbsUpTraining.csv" };
 
 	SparGlove sg;
 
 	//sg.enable();
 
-	MYOClassifier mc = MYOClassifier(v, sg);
+	MYOClassifier mc = MYOClassifier(v);
 
 	return 0;
 }
