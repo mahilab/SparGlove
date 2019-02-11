@@ -261,11 +261,14 @@ MYOClassifier::MYOClassifier(std::vector<std::string> training_files) { //, Spar
 			if (keypress_refract_clock.get_elapsed_time() > keypress_refract_time) {
 				if (dir_classifier.train()) {
 					LOG(Info) << "Trained new active/rest classifier based on given data.";
+					dir_classifier.save();
 				}
 				keypress_refract_clock.restart();
 			}
 			
 		}
+
+		
 
 		if (Keyboard::is_key_pressed(Key::U)) {
 			if (dir_classifier.is_trained()) {
@@ -273,7 +276,9 @@ MYOClassifier::MYOClassifier(std::vector<std::string> training_files) { //, Spar
 				std::string file_to_parse;
 				std::cout << "Which file would you like to classify?" << std::endl;
 				std::getline(std::cin, file_to_parse);
-			
+				pred_label = 9;
+				std::cout << pred_label << std::endl;
+
 				//for (std::vector<std::string>::iterator it = file_to_parse.begin(); it != file_to_parse.end(); ++it) {
 					int*** classy_data = Parse(file_to_parse);
 
@@ -285,6 +290,7 @@ MYOClassifier::MYOClassifier(std::vector<std::string> training_files) { //, Spar
 							for (int m = 0; m < 8; m++) {
 
 								row.push_back(classy_data[0][L][m]);  //converts integers in input file to double precision which RealTimeClassifier expects
+							
 							}
 							//classification_set.push_back(row);
 							dir_classifier.update(row);

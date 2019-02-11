@@ -90,7 +90,7 @@ int main1() {
 
 int main() {
 	std::vector <std::string> v;
-	v = { "PointTraining.csv", "ButtonTraining.csv", "ExtensionTraining.csv", "SCI_Fist_Training.csv" , "OKTraining.csv", "ThumbOppoTraining.csv", "ThumbsUpTraining.csv" };
+	v = { "PoseButtonTraining.csv", "PoseExtensionTraining.csv", "PoseOKTraining.csv", "PosePointTraining.csv", "PoseCylinderTraining.csv" ,  "PoseThumbOppoTraining.csv", "PoseThumbsUpTraining.csv" };
 
 	SparGlove sg;
 
