@@ -85,18 +85,10 @@ private:
 
 MYOClassifier::MYOClassifier(std::vector<std::string> training_files) { //, SparGlove& sg) {
 	
-	
-
 	// handle inputs
 	std::vector<uint32> emg_channel_numbers = { 0,1,2,3,4,5,6,7 };
 
 	mel::MyoBand myo("my_myo");
-
-	// initialize logger
-	//mel::init_logger(mel::Verbose);
-
-	// register ctrl-c handler
-	//register_ctrl_handler(handler);
 
 	// construct array of Myoelectric Signals
 	MesArray mes(myo.get_channels(emg_channel_numbers));
@@ -138,21 +130,12 @@ MYOClassifier::MYOClassifier(std::vector<std::string> training_files) { //, Spar
 	// construct timer in hybrid mode to avoid using 100% CPU
 	Timer timer(Ts, Timer::Hybrid);
 
-	//{
-	//	Lock lock(sg.mtx);
-	//	std::cout << "MYO_Classifier thinks pred_label is" << std::endl;
-//
-//		std::cout << pred_label << std::endl;
-//	}
-	
-
-
-	//std::cout << mes_active_capture_window_size << std::endl;
-
 	int pose = 0;
 
+	int*** read_in_object = new int**[7];
+
 	for (std::vector<std::string>::iterator it = training_files.begin(); it != training_files.end(); ++it) {
-		int*** training_data = Parse(*it);
+		Parse(*it, read_in_object);
 		
 		for (int k = 0; k <= 6; k++) {
 			std::vector<std::vector<double>> training_set;
@@ -162,13 +145,15 @@ MYOClassifier::MYOClassifier(std::vector<std::string> training_files) { //, Spar
 
 				for (int m = 0; m < 8; m++) {
 					
-					row.push_back(training_data[k][L][m]);  //converts integers in input file to double precision which RealTimeClassifier expects
+					row.push_back(read_in_object[k][L][m]);  //converts integers in input file to double precision which RealTimeClassifier expects
+					
 				}
 				training_set.push_back(row);
+				std::cout << row << std::endl;
 			}
 			dir_classifier.add_training_data(pose, training_set);
 
-			std::cout << training_set.size() << std::endl;
+			//std::cout << training_set.size() << std::endl;
 
 			if (dir_classifier.add_training_data(pose, training_set)) {
 				LOG(Info) << "Added active data for target " + stringify(pose + 1) + ".";
@@ -178,6 +163,14 @@ MYOClassifier::MYOClassifier(std::vector<std::string> training_files) { //, Spar
 		pose++;
 		
 	}
+
+	for (int i = 0; i < 7; i++) {
+		for (int j = 0; j < 200; j++) {
+			delete read_in_object[i][j];
+		}
+		delete read_in_object[i];
+	}
+	delete read_in_object;
 
 	// prompt the user for input
 	print("Press 'A + target #' to add training data for one target.");
@@ -190,29 +183,12 @@ MYOClassifier::MYOClassifier(std::vector<std::string> training_files) { //, Spar
 	print("Press 'S' to stop the OpenWrist");
 	print("Press 'Escape' to exit.");
 
-	// enable hardware
-	//q8.enable();
-	//ow.enable();
-	//q8.watchdog.start();
-	myo.enable();
-	//sg.enable();
+	//myo.enable();
 
 	while (true) {
-		//counter = counter + 1;
-
-		//std::cout << counter << std::endl;
-		// update hardware
-		//q8.watchdog.kick();
-		//q8.update_input();
-		
-//		{
-//			Lock lock(sg.mtx);
-////			print("MYOClassifier Main loop");
-//		}
-//		std::cout << "Got to the main loop" << std::endl;
 		
 		// update all DAQ input channels
-		myo.update();
+		//myo.update();
 
 		// emg signal processing
 		mes.update_and_buffer();
@@ -265,10 +241,7 @@ MYOClassifier::MYOClassifier(std::vector<std::string> training_files) { //, Spar
 				}
 				keypress_refract_clock.restart();
 			}
-			
 		}
-
-		
 
 		if (Keyboard::is_key_pressed(Key::U)) {
 			if (dir_classifier.is_trained()) {
@@ -279,23 +252,22 @@ MYOClassifier::MYOClassifier(std::vector<std::string> training_files) { //, Spar
 				pred_label = 9;
 				std::cout << pred_label << std::endl;
 
-				//for (std::vector<std::string>::iterator it = file_to_parse.begin(); it != file_to_parse.end(); ++it) {
-					int*** classy_data = Parse(file_to_parse);
+				int*** data_to_classify = new int**[1];
 
-						std::vector<std::vector<double>> classification_set;
+				//for (std::vector<std::string>::iterator it = file_to_parse.begin(); it != file_to_parse.end(); ++it) {
+					Parse(file_to_parse, data_to_classify);
 
 						for (int L = 0; L < 200; L++) {
 							std::vector<double> row;
 
 							for (int m = 0; m < 8; m++) {
 
-								row.push_back(classy_data[0][L][m]);  //converts integers in input file to double precision which RealTimeClassifier expects
+								row.push_back(data_to_classify[0][L][m]);  //converts integers in input file to double precision which RealTimeClassifier expects
 							
 							}
 							//classification_set.push_back(row);
 							dir_classifier.update(row);
 						}
-
 
 						//dir_classifier.update(classification_set); //needs a for loop to add each row of the classification set as a live stream.  This should match what "update" is looking for
 						pred_label = dir_classifier.get_class();
@@ -317,162 +289,61 @@ MYOClassifier::MYOClassifier(std::vector<std::string> training_files) { //, Spar
 							std::cout << pred_label << std::endl;
 
 							std::cout << "We've made a prediction!" << std::endl; 
-		//				}*/
-
+							
+							for (int i = 0; i < 1; i++) {
+								for (int j = 0; j < 200; j++) {
+									delete data_to_classify[i][j];
+								}
+								delete data_to_classify[i];
+							}
+							delete data_to_classify;
 			}
 			else
 				std::cout << "You must train the algorithm before attempting to Use a data set" << std::endl;
 		}
-
-		// set OpenWrist run state
-		if (Keyboard::is_key_pressed(Key::R) && keypress_refract_clock.get_elapsed_time() > keypress_refract_time) {
-			LOG(Info) << "OpenWrist Running";
-			run = true;
-			keypress_refract_clock.restart();
-		}
-		else if (Keyboard::is_key_pressed(Key::S) && keypress_refract_clock.get_elapsed_time() > keypress_refract_time) {
-			LOG(Info) << "OpenWrist Stopped";
-			run = false;
-			keypress_refract_clock.restart();
-		}
-
-	
-	   // set OpenWrist goal
-		if (run) {
-			//    if (cooldown_clock.get_elapsed_time() > seconds(0.5)) {
-			//        if (pred_label == 0) {
-			//            // Rest
-			//            ps_goal = ow[0].get_position();
-			//            fe_goal = ow[1].get_position();
-			//            ru_goal = ow[2].get_position();
-			//        }
-			//        if (pred_label == 1) {
-			//            // Flexion
-			//            ps_goal = ow[0].get_position();
-			//            fe_goal = 60 * mel::DEG2RAD;
-			//            ru_goal = ow[2].get_position();
-			//        }
-			//        else if (pred_label == 2) {
-			//            // Extension
-			//            ps_goal = ow[0].get_position();
-			//            fe_goal = -60 * mel::DEG2RAD;
-			//            ru_goal = ow[2].get_position();
-			//        }
-			//        else if (pred_label == 3) {
-			//            // Radial Deviation
-			//            ps_goal = ow[0].get_position();
-			//            fe_goal = ow[1].get_position();
-			//            ru_goal = 30 * mel::DEG2RAD;
-			//        }
-			//        else if (pred_label == 4) {
-			//            // Ulnar Deviation
-			//            ps_goal = ow[0].get_position();
-			//            fe_goal = ow[1].get_position();
-			//            ru_goal = -30 * mel::DEG2RAD;
-			//        }
-			//        else if (pred_label == 5) {
-			//            // Pronation
-			//            ps_goal = 80 * mel::DEG2RAD;
-			//            fe_goal = ow[1].get_position();
-			//            ru_goal = ow[2].get_position();
-			//        }
-			//        else if (pred_label == 6) {
-			//            // Supination
-			//            ps_goal = -80 * mel::DEG2RAD;
-			//            fe_goal = ow[1].get_position();
-			//            ru_goal = ow[2].get_position();
-			//        }
-			//        cooldown_clock.restart(); // restart so OpenWrist goal is only change once per half second
-			//    }
-		}
-		//else {
-		//    ps_goal = 0.0;
-		//    fe_goal = 0.0;
-		//    ru_goal = 0.0;
-		//}
-
-		//// set previous label
-		//prev_pred_label = pred_label;
-
-		//// set OpenWrist torques
-		//ow[0].set_torque(pd0.move_to_hold(ps_goal, ow[0].get_position(),
-		//    move_speed, ow[0].get_velocity(),
-		//    0.001, mel::DEG2RAD, 10 * mel::DEG2RAD));
-		//ow[0].add_torque(ow.compute_gravity_compensation(0));
-
-		//ow[1].set_torque(pd1.move_to_hold(fe_goal, ow[1].get_position(),
-		//    move_speed, ow[1].get_velocity(),
-		//    0.001, mel::DEG2RAD, 10 * mel::DEG2RAD));
-		//ow[0].add_torque(ow.compute_gravity_compensation(1));
-
-		//ow[2].set_torque(pd2.move_to_hold(ru_goal, ow[2].get_position(),
-		//    move_speed, ow[2].get_velocity(),
-		//    0.001, mel::DEG2RAD, 10 * mel::DEG2RAD));
-		//ow[0].add_torque(ow.compute_gravity_compensation(2));
-
 
 		// write to MelShares
 		ms_mes_env.write_data(mes.get_envelope());
 		ms_mes_dm.write_data(mes.get_demean());
 		ms_pred_label.write_data({ (double)((signed)(pred_label + 1)) });
 
-
-
-
-		// check limits
-		//if (ow.any_limit_exceeded()) {
-		//    ctrlc == true;
-		//}
-
 		// check for exit key
 		if (Keyboard::is_key_pressed(Key::Escape)) {
 			//ctrlc = true;
 		}
-
-		// update hardware
-		//q8.update_output();
 
 		// wait for remainder of sample period
 		timer.wait();
 
 	} // end control loop
 
-
 	return;
-
-
 }
 
 MYOClassifier::~MYOClassifier()
 {
 }
 
-int*** MYOClassifier::Parse(std::string filename) {
+int*** MYOClassifier::Parse(std::string filename, int*** shell_array) {
 
 	std::ifstream       file(filename);
 
 	int i = 0;
 	int h = 0;
 
-	int*** Training_Sets = new int**[7];
-
 	for (CSVIterator row(file); row != CSVIterator(); ++row)
 	{
 
 		if (i == 0) {
-			Training_Sets[h] = new int*[200];
+			shell_array[h] = new int*[200];
 
 		}
 
-		Training_Sets[h][i] = new int[8];
+		shell_array[h][i] = new int[8];
 		for (int j = 0; j < 8; j++) {
-
-			Training_Sets[h][i][j] = std::stoi((*row)[j]);
-			//std::cout << Training_Sets[h][i][j] << " ";
-
+			shell_array[h][i][j] = std::stoi((*row)[j]);
 		}
 
-		//std::cout << std::endl;
 		i++;
 		//prompt("Press Enter");
 		if (i == 200) {
@@ -481,11 +352,11 @@ int*** MYOClassifier::Parse(std::string filename) {
 		}
 	}
 
-
-
 	//prompt("Press Enter");
 	file.close();
 
-	return Training_Sets;
+
+	//return Training_Sets;
+	
 }
 

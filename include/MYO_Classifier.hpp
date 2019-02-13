@@ -43,7 +43,7 @@ public:
 	//Destructor
 	~MYOClassifier();
 
-	int*** Parse(std::string);
+	int*** Parse(std::string, int*** Training_Sets);
 
 
 
