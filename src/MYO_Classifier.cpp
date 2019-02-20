@@ -137,6 +137,9 @@ MYOClassifier::MYOClassifier(std::vector<std::string> training_files) { //, Spar
 	for (std::vector<std::string>::iterator it = training_files.begin(); it != training_files.end(); ++it) {
 		Parse(*it, read_in_object);
 		
+		std::cout << "MES Array is size ";
+		std::cout << mes_active_capture_window_size << std::endl;
+
 		for (int k = 0; k <= 6; k++) {
 			std::vector<std::vector<double>> training_set;
 
@@ -149,7 +152,7 @@ MYOClassifier::MYOClassifier(std::vector<std::string> training_files) { //, Spar
 					
 				}
 				training_set.push_back(row);
-				std::cout << row << std::endl;
+			//	std::cout << row << std::endl;
 			}
 			dir_classifier.add_training_data(pose, training_set);
 
@@ -191,11 +194,11 @@ MYOClassifier::MYOClassifier(std::vector<std::string> training_files) { //, Spar
 		//myo.update();
 
 		// emg signal processing
-		mes.update_and_buffer();
+		//mes.update_and_buffer();
 		
 		// predict state
-		if (dir_classifier.update(mes.get_demean())) {
-			pred_label = dir_classifier.get_class();
+		//if (dir_classifier.update(mes.get_demean())) {
+			//pred_label = dir_classifier.get_class();
 			//sg.notify(pred_label);
 			//std::cout << "MYO_Classifier thinks pred_label is" << std::endl;
 
@@ -204,7 +207,7 @@ MYOClassifier::MYOClassifier(std::vector<std::string> training_files) { //, Spar
 	//		std::cout << "Counter is " << std::endl;
 
 		//	std::cout << counter	<< std::endl;
-		}
+		//}
 
 		// clear active data
 		for (std::size_t k = 0; k < num_classes; ++k) {
@@ -254,22 +257,32 @@ MYOClassifier::MYOClassifier(std::vector<std::string> training_files) { //, Spar
 
 				int*** data_to_classify = new int**[1];
 
+				//int counter1 = 0;
+				
+				//int counter3 = 0;
 				//for (std::vector<std::string>::iterator it = file_to_parse.begin(); it != file_to_parse.end(); ++it) {
 					Parse(file_to_parse, data_to_classify);
 
 						for (int L = 0; L < 200; L++) {
 							std::vector<double> row;
-
+							//counter1++;
+							//std::cout << "counter1 = ";
+							//std::cout << counter1 << std::endl;
+							//int counter2 = 0;
 							for (int m = 0; m < 8; m++) {
-
+							//	counter2++;
+							//	std::cout << "counter2 = ";
+							//	std::cout << counter2 << std::endl;
 								row.push_back(data_to_classify[0][L][m]);  //converts integers in input file to double precision which RealTimeClassifier expects
 							
 							}
 							//classification_set.push_back(row);
-							dir_classifier.update(row);
+							if (dir_classifier.update(row)) {
+								std::cout << "Should be ready to make a prediction" << std::endl;
+							}
+
 						}
 
-						//dir_classifier.update(classification_set); //needs a for loop to add each row of the classification set as a live stream.  This should match what "update" is looking for
 						pred_label = dir_classifier.get_class();
 
 						/*
