@@ -703,29 +703,29 @@ void SparGlove::step_home() {
 
 	MelShare ms("motor_spin");
 
-	auto enc = q8_.encoder[0];
-	enc.zero();
-	enc.set_units_per_count(2 * PI / 512.0);
+	//auto enc = q8_.encoder[0];
+	//enc.zero();
+	//enc.set_units_per_count(2 * PI / 512.0);
 
-	Amplifier amp("a0", Low, q8_.DO[0], 1.8, q8_.AO[0]);
-	Motor motor("m0", 0.0109, amp);
-	Joint joint("j0", &motor, &enc, &enc, 1 / 4.4 * 2 / (2 * PI));
+	//Amplifier amp("a0", Low, q8_.DO[0], 1.8, q8_.AO[0]);
+	//Motor motor("m0", 0.0109, amps_[0]);
+	//Joint joint("j0", &motors_[0], &enc, &enc, 1 / 4.4 * 2 / (2 * PI));
 	//(Actuator, PositionSensor, PSTransmission, VelocitySensor, VSTransmission, PosLimits ...)
 	double ref = 0.0;
 
-	PdController pd(0.2, 0.01);
+	//PdController pd(0.2, 0.01);
 
-	while (!Keyboard::is_key_pressed(Key::Escape))
+	while (!g_stop)
 	{
 		//std::cout << "got home" << std::endl;
 		q8_.update_input();
 
-		double act = joint.get_position();
+		double act = get_joint(0).get_position();
 
 		if (Keyboard::is_key_pressed(Key::E))
-			motor.enable();
+			motors_[0].enable();
 		else if (Keyboard::is_key_pressed(Key::D))
-			motor.disable();
+			motors_[0].disable();
 
 
 		if (Keyboard::is_key_pressed(Key::Up))
@@ -734,16 +734,24 @@ void SparGlove::step_home() {
 			ref -= 0.01;
 
 
-		double amps = pd.calculate(ref, act, 0, joint.get_velocity());
+		double amps = pd_controllers_[0].calculate(ref, act, 0, get_joint(0).get_velocity());
 		amps = -saturate(amps, -0.4, 0.4);
 
-		amp.set_current(amps);
+		amps_[0].set_current(amps);
 		ms.write_data({ ref, act, amps });
 
 		q8_.update_output();
 		t = timer.wait();
+
+		// check for exit key
+		if (Keyboard::is_key_pressed(Key::Escape)) {
+			g_stop = true;
+			//amps_[0].set_current(0.0);
+		}
 	}
 
+	//motors_[0].disable();
+	prompt( "Amp should be disabled" );
 	q8_.disable();
 	q8_.close();
 
@@ -782,7 +790,7 @@ bool SparGlove::on_enable() {
 /// Overrides the default Robot::enable function with some custom logic
 bool SparGlove::on_disable() {
 
-
+	motors_[0].disable();
 	if (Robot::on_disable() && q8_.disable() && q8_.close())
 	{
 
