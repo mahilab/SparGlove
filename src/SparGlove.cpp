@@ -15,16 +15,17 @@ SparGlove::SparGlove() :
 
 	Robot("spar_glove"),
 	q8_(),
-	kt_{ -.00413, -.00413, .00413, .00413, -.00413, .00413, .00413 }, // mN * m / amp
+	kt_{ .0109, .0109, .0109, .0109, .0109, .0109, .0109 }, // N * m / amp
 	motor_cont_limits_{ 3.63, 3.63, 3.63, 3.63, 3.63, 3.63, 3.63 },  // amps
 	motor_peak_limits_{ 6.0, 6.0, 6.0, 6.0, 6.0, 6.0, 6.0 }, // amps
-	motor_i2t_times_{ seconds(1), seconds(1), seconds(1), seconds(1), seconds(1), seconds(1), seconds(1) },
-	eta_{ 4.4*3.1831*.0001, 4.4*3.1831*.0001, 4.4*3.1831*.0001, 4.4*3.1831*.0001, 4.4*3.1831*.0001, 4.4*3.1831*.0001, 4.4*3.1831*.0001 }, //gearbox ratio including screw pitch
+	motor_i2t_times_{ seconds(1.116), seconds(1.116), seconds(1.116), seconds(1.116), seconds(1.116), seconds(1.116), seconds(1.116) },
+	//eta_{ 4.4*3.1831*.0001, 4.4*3.1831*.0001, 4.4*3.1831*.0001, 4.4*3.1831*.0001, 4.4*3.1831*.0001, 4.4*3.1831*.0001, 4.4*3.1831*.0001 }, //gearbox ratio including screw pitch
+	eta_{ 1 / 4.4 * 2 / (2 * PI), 1 / 4.4 * 2 / (2 * PI), 1 / 4.4 * 2 / (2 * PI), 1 / 4.4 * 2 / (2 * PI), 1 / 4.4 * 2 / (2 * PI), 1 / 4.4 * 2 / (2 * PI), 1 / 4.4 * 2 / (2 * PI) },
 	encoder_res_{ 512, 512, 512, 512, 512, 512, 512 }, //ticks/rev
-	pos_limits_neg_{ 0,0,0,0,0,0,0 }, //m
-	pos_limits_pos_{ .07, .07, .07, .07, .07, .07, .07 }, //m
-	vel_limits_{ 0.03, 0.03, 0.03, 0.03, 0.03, 0.03, 0.03 },
-	joint_torque_limits{ 60, 60, 60, 60, 60, 60, 60 },
+	pos_limits_neg_{ 0, 0, 0, 0, 0, 0, 0 }, //mm
+	pos_limits_pos_{ 75, 75, 75, 75, 75, 75, 75 }, //mm, determined experimentally
+	vel_limits_{ 35, 35, 35, 35, 35, 35, 35 }, //Motor should complete its stroke in ~2 seconds, which is intentionally made slow. Can be changed if necessary
+	joint_torque_limits{ 60, 60, 60, 60, 60, 60, 60 }, //limits set intentionally high, current limits will be the driving limiter////////////////////////////
 	kin_friction_{ 0,0,0,0,0,0,0 },
 	pd_controllers_(7),
 	encoders_(7)
@@ -68,13 +69,14 @@ SparGlove::SparGlove() :
 	for (std::size_t i = 0; i < 7; ++i) {
 
 		encoders_[i] = q8_.encoder[i];
+		encoders_[i].set_units_per_count(2 * PI / encoder_res_[i]);
 
 		Joint joint(
 			"Spar_joint_" + std::to_string(i),
 			&motors_[i],
-			eta_[i],
+			//eta_[i],
 			&encoders_[i],
-			eta_[i],
+			//eta_[i],
 			&encoders_[i],
 			eta_[i],
 			std::array<double, 2>({ pos_limits_neg_[i], pos_limits_pos_[i] }),
@@ -169,12 +171,6 @@ void SparGlove::start_myo() {
 
 	mel::MyoBand myo("my_myo");
 
-	// initialize logger
-	//mel::init_logger(mel::Verbose);
-
-	// register ctrl-c handler
-	//register_ctrl_handler(handler);
-
 	// construct array of Myoelectric Signals
 	MesArray mes(myo.get_channels(emg_channel_numbers));
 
@@ -206,12 +202,12 @@ void SparGlove::start_myo() {
 	bool WL = false;
 	bool ZC = false;
 	bool SSC = false;
-	bool AR1 = false;
+	bool AR1 = true;
 	bool AR2 = false;
 	bool AR3 = false;
 	bool AR4 = false;
 
-	EmgDirClassifier dir_classifier(num_classes, emg_channel_numbers.size(), Ts, RMS, MAV, WL, ZC, SSC, AR1, AR2, AR3, AR4, seconds(1.0), seconds(0.2), seconds(0.9));
+	EmgDirClassifier dir_classifier(num_classes, emg_channel_numbers.size(), Ts, RMS, MAV, WL, ZC, SSC, AR1, AR2, AR3, AR4, seconds(0.4), seconds(0.2), seconds(0.3));
 
 	bool run = false;
 	Clock cooldown_clock;
@@ -285,7 +281,16 @@ void SparGlove::start_myo() {
 			if (keypress_refract_clock.get_elapsed_time() > keypress_refract_time) {
 				if (dir_classifier.train()) {
 					LOG(Info) << "Trained new active/rest classifier based on given data.";
+					dir_classifier.save();
 				}
+				keypress_refract_clock.restart();
+			}
+		}
+
+		if (Keyboard::is_key_pressed(Key::L)) {
+			if (keypress_refract_clock.get_elapsed_time() > keypress_refract_time) {
+				dir_classifier.load("Current_Classifier.csv");
+				std::cout << "Loaded the most recent dir_classifier" << std::endl;
 				keypress_refract_clock.restart();
 			}
 		}
@@ -313,78 +318,8 @@ void SparGlove::start_myo() {
 			}
 		}
 
-		//if (run) {
-		//	if (cooldown_clock.get_elapsed_time() > seconds(0.5)) {
-		//		if (pred_label == 0) {
-		//			// Rest
-		//			ps_goal = ow[0].get_position();
-		//			fe_goal = ow[1].get_position();
-		//			ru_goal = ow[2].get_position();
-		//		}
-		//		if (pred_label == 1) {
-		//			// Flexion
-		//			ps_goal = ow[0].get_position();
-		//			fe_goal = 60 * mel::DEG2RAD;
-		//			ru_goal = ow[2].get_position();
-		//		}
-		//		else if (pred_label == 2) {
-		//			// Extension
-		//			ps_goal = ow[0].get_position();
-		//			fe_goal = -60 * mel::DEG2RAD;
-		//			ru_goal = ow[2].get_position();
-		//		}
-		//		else if (pred_label == 3) {
-		//			// Radial Deviation
-		//			ps_goal = ow[0].get_position();
-		//			fe_goal = ow[1].get_position();
-		//			ru_goal = 30 * mel::DEG2RAD;
-		//		}
-		//		else if (pred_label == 4) {
-		//			// Ulnar Deviation
-		//			ps_goal = ow[0].get_position();
-		//			fe_goal = ow[1].get_position();
-		//			ru_goal = -30 * mel::DEG2RAD;
-		//		}
-		//		else if (pred_label == 5) {
-		//			// Pronation
-		//			ps_goal = 80 * mel::DEG2RAD;
-		//			fe_goal = ow[1].get_position();
-		//			ru_goal = ow[2].get_position();
-		//		}
-		//		else if (pred_label == 6) {
-		//			// Supination
-		//			ps_goal = -80 * mel::DEG2RAD;
-		//			fe_goal = ow[1].get_position();
-		//			ru_goal = ow[2].get_position();
-		//		}
-		//cooldown_clock.restart(); // restart so OpenWrist goal is only change once per half second
-		//	}
-		//}
-		//else {
-		//	ps_goal = 0.0;
-		//	fe_goal = 0.0;
-		//	ru_goal = 0.0;
-		//}
-
 		// set previous label
 		prev_pred_label = pred_label;
-
-		// set OpenWrist torques
-		/*ow[0].set_torque(pd0.move_to_hold(ps_goal, ow[0].get_position(),
-		move_speed, ow[0].get_velocity(),
-		0.001, mel::DEG2RAD, 10 * mel::DEG2RAD));
-		ow[0].add_torque(ow.compute_gravity_compensation(0));
-
-		ow[1].set_torque(pd1.move_to_hold(fe_goal, ow[1].get_position(),
-		move_speed, ow[1].get_velocity(),
-		0.001, mel::DEG2RAD, 10 * mel::DEG2RAD));
-		ow[0].add_torque(ow.compute_gravity_compensation(1));
-
-		ow[2].set_torque(pd2.move_to_hold(ru_goal, ow[2].get_position(),
-		move_speed, ow[2].get_velocity(),
-		0.001, mel::DEG2RAD, 10 * mel::DEG2RAD));
-		ow[0].add_torque(ow.compute_gravity_compensation(2));
-		*/
 
 		// write to MelShares
 		ms_mes_env.write_data(mes.get_envelope());
@@ -555,6 +490,41 @@ void SparGlove::start_turning() {
 			}
 		}
 
+		double pos_act_0 = get_joint(0).get_position();
+		double pos_act_1 = get_joint(1).get_position();
+		double pos_act_2 = get_joint(2).get_position();
+		double pos_act_3 = get_joint(3).get_position();
+		double pos_act_4 = get_joint(4).get_position();
+		double pos_act_5 = get_joint(5).get_position();
+		double pos_act_6 = get_joint(6).get_position();
+
+		double vel_act_0 = get_joint(0).get_velocity();
+		double vel_act_1 = get_joint(1).get_velocity();
+		double vel_act_2 = get_joint(2).get_velocity();
+		double vel_act_3 = get_joint(3).get_velocity();
+		double vel_act_4 = get_joint(4).get_velocity();
+		double vel_act_5 = get_joint(5).get_velocity();
+		double vel_act_6 = get_joint(6).get_velocity();
+
+		/////////////////This is the section that will go into the switch/case block in start_MYO/////////////
+		double pos_ref_0 = 0.0; //replace with a reference to pred_label
+		double pos_ref_1 = 0.0;
+		double pos_ref_2 = 0.0;
+		double pos_ref_3 = 0.0;
+		double pos_ref_4 = 0.0;
+		double pos_ref_5 = 0.0;
+		double pos_ref_6 = 0.0;
+		////////////////////////////////////////////////////////////////////////////
+
+
+		double torque_0 = pd_controllers_[4].calculate(pos_ref_0, pos_act_0, 0, vel_act_0);
+		double torque_1 = pd_controllers_[4].calculate(pos_ref_1, pos_act_1, 0, vel_act_1);
+		double torque_2 = pd_controllers_[4].calculate(pos_ref_2, pos_act_2, 0, vel_act_2);
+		double torque_3 = pd_controllers_[4].calculate(pos_ref_3, pos_act_3, 0, vel_act_3);
+		double torque_4 = pd_controllers_[4].calculate(pos_ref_4, pos_act_4, 0, vel_act_4);
+		double torque_5 = pd_controllers_[4].calculate(pos_ref_5, pos_act_5, 0, vel_act_5);
+		double torque_6 = pd_controllers_[4].calculate(pos_ref_6, pos_act_6, 0, vel_act_6);
+
 
 
 		double pos_ref = get_joint(0).get_position();
@@ -597,58 +567,100 @@ void SparGlove::start_turning() {
 		}
 		keypress_refract_clock.restart();
 		}*/
-		//if (true) {
-		//	if (cooldown_clock.get_elapsed_time() > seconds(0.5)) {
-		//		if (pred_label == 0) {
-		//			// Rest
-		//			ps_goal = ow[0].get_position();
-		//			fe_goal = ow[1].get_position();
-		//			ru_goal = ow[2].get_position();
+		
+		// write to MelShares
+		ms_pred_label.write_data({ (double)((signed)(pred_label + 1)) });
+		ms_Torque.write_data({ (torque) });
+		ms_Pos_Ref.write_data({ (pos_ref) });
+		ms_Pos_Act.write_data({ (pos_act) });
+		
+		// check for exit key
+		if (Keyboard::is_key_pressed(Key::Escape)) {
+			g_stop = true;
+		}
+
+		// update hardware
+		q8_.update_output();
+
+		// wait for remainder of sample period
+		timer.wait();
+
+	}
+
+
+}
+
+void SparGlove::start_homing() {
+	Time Ts = milliseconds(1); // sample period
+	std::size_t pred_label = 0;
+	std::vector<Key> active_keys = { Key::Num1, Key::Num2, Key::Num3, Key::Num4, Key::Num5, Key::Num6, Key::Num7 };
+
+	// construct clock to regulate interaction
+	Clock keypress_refract_clock;
+	Time keypress_refract_time = seconds(0.2);
+
+	// make MelShares
+	MelShare ms_pred_label("pred_label");
+	MelShare ms_Torque("Torque");
+	MelShare ms_Pos_Ref("Pos_Ref");
+	MelShare ms_Pos_Act("Pos_Act");
+
+	// construct timer in hybrid mode to avoid using 100% CPU
+	Timer timer(Ts, Timer::Hybrid);
+
+	Time t;
+
+	q8_.watchdog.start();
+	
+	double pos_ref = 0;
+
+	while (!g_stop) {
+
+		t = timer.get_elapsed_time();
+
+		// update hardware
+		q8_.watchdog.kick();
+		q8_.update_input();
+
+
+		//fake prediction
+		//for (std::size_t k = 0; k < active_keys.size(); ++k) {
+		//	if (Keyboard::is_key_pressed(active_keys[k])) {
+		//		if (keypress_refract_clock.get_elapsed_time() > keypress_refract_time) {
+		//			pred_label = k;
+		//			std::cout << pred_label << std::endl;
+		//			keypress_refract_clock.restart();
 		//		}
-		//		if (pred_label == 1) {
-		//			// Flexion
-		//			ps_goal = ow[0].get_position();
-		//			fe_goal = 60 * mel::DEG2RAD;
-		//			ru_goal = ow[2].get_position();
-		//		}
-		//		else if (pred_label == 2) {
-		//			// Extension
-		//			ps_goal = ow[0].get_position();
-		//			fe_goal = -60 * mel::DEG2RAD;
-		//			ru_goal = ow[2].get_position();
-		//		}
-		//		else if (pred_label == 3) {
-		//			// Radial Deviation
-		//			ps_goal = ow[0].get_position();
-		//			fe_goal = ow[1].get_position();
-		//			ru_goal = 30 * mel::DEG2RAD;
-		//		}
-		//		else if (pred_label == 4) {
-		//			// Ulnar Deviation
-		//			ps_goal = ow[0].get_position();
-		//			fe_goal = ow[1].get_position();
-		//			ru_goal = -30 * mel::DEG2RAD;
-		//		}
-		//		else if (pred_label == 5) {
-		//			// Pronation
-		//			ps_goal = 80 * mel::DEG2RAD;
-		//			fe_goal = ow[1].get_position();
-		//			ru_goal = ow[2].get_position();
-		//		}
-		//		else if (pred_label == 6) {
-		//			// Supination
-		//			ps_goal = -80 * mel::DEG2RAD;
-		//			fe_goal = ow[1].get_position();
-		//			ru_goal = ow[2].get_position();
-		//		}
-		//		cooldown_clock.restart(); // restart so OpenWrist goal is only change once per half second
 		//	}
 		//}
-		//else {
-		//	ps_goal = 0.0;
-		//	fe_goal = 0.0;
-		//	ru_goal = 0.0;
-		//}
+
+		double pos_act = get_joint(0).get_position();
+		double vel_act = get_joint(0).get_velocity();
+		
+
+		if (Keyboard::is_key_pressed(Key::H)) {
+			pos_ref = pos_act + .1; //replace this with a RAMP 
+			//pos_ref = 5 * t.as_seconds();
+			std::cout << "H is pressed" << std::endl;
+		}
+		else if(Keyboard::is_key_pressed(Key::Z)) {
+			pos_ref = 0; 
+			std::cout << "Z is pressed" << std::endl;
+		}
+		else {
+			pos_ref = pos_act;
+		}
+
+		double torque = pred_label * 0.1;
+		double torque2 = pd_controllers_[0].calculate(pos_ref, pos_act, 0, vel_act);
+		double sat = .001;
+
+		torque2 = saturate(torque2, sat);
+
+		/*if (torque2 >= sat)
+			break;*/
+
+		//get_joint(1).set_torque(torque2);
 
 		// write to MelShares
 		ms_pred_label.write_data({ (double)((signed)(pred_label + 1)) });
@@ -673,6 +685,69 @@ void SparGlove::start_turning() {
 
 }
 
+void SparGlove::step_home() {
+	std::cout << "I'm here" << std::endl;
+	//Q8Usb q8;
+
+	q8_.DO.set_enable_values(std::vector<Logic>(8, High));
+	q8_.DO.set_disable_values(std::vector<Logic>(8, High));
+
+	q8_.AO.set_enable_values(std::vector<double>(8, 0));
+	q8_.AO.set_disable_values(std::vector<double>(8, 0));
+
+	q8_.open();
+	q8_.enable();
+
+	Timer timer(hertz(1000));
+	Time t;
+
+	MelShare ms("motor_spin");
+
+	auto enc = q8_.encoder[0];
+	enc.zero();
+	enc.set_units_per_count(2 * PI / 512.0);
+
+	Amplifier amp("a0", Low, q8_.DO[0], 1.8, q8_.AO[0]);
+	Motor motor("m0", 0.0109, amp);
+	Joint joint("j0", &motor, &enc, &enc, 1 / 4.4 * 2 / (2 * PI));
+	//(Actuator, PositionSensor, PSTransmission, VelocitySensor, VSTransmission, PosLimits ...)
+	double ref = 0.0;
+
+	PdController pd(0.2, 0.01);
+
+	while (!Keyboard::is_key_pressed(Key::Escape))
+	{
+		//std::cout << "got home" << std::endl;
+		q8_.update_input();
+
+		double act = joint.get_position();
+
+		if (Keyboard::is_key_pressed(Key::E))
+			motor.enable();
+		else if (Keyboard::is_key_pressed(Key::D))
+			motor.disable();
+
+
+		if (Keyboard::is_key_pressed(Key::Up))
+			ref += 0.01;
+		else if (Keyboard::is_key_pressed(Key::Down))
+			ref -= 0.01;
+
+
+		double amps = pd.calculate(ref, act, 0, joint.get_velocity());
+		amps = -saturate(amps, -0.4, 0.4);
+
+		amp.set_current(amps);
+		ms.write_data({ ref, act, amps });
+
+		q8_.update_output();
+		t = timer.wait();
+	}
+
+	q8_.disable();
+	q8_.close();
+
+}
 /// Overrides the default Robot::enable function with some custom logic
 bool SparGlove::on_enable() {
 	std::cout << "SparGlove is TOO enabled" << std::endl;

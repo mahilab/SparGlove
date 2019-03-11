@@ -16,7 +16,50 @@
 
 
 
+
+
+#include <MEL/Daq/Quanser/Q8Usb.hpp>
+#include <MEL/Core.hpp>
+#include <MEL/Communications.hpp>
+#include <MEL/Mechatronics.hpp>
+#include <vector>
+#include <MEL/Devices/Windows/Keyboard.hpp>
+#include <MEL/Math/Functions.hpp>
+
 using namespace mel;
+
+
+int main(int argc, char const *argv[])
+{
+	SparGlove sg;
+//	sg.enable;
+	sg.step_home();
+
+	//sg.disable();
+//	sg.on_disable();
+	return 0;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//using namespace mel;
 //==============================================================================
 // MISC
 //==============================================================================
@@ -74,26 +117,30 @@ return 0;
 //std::thread IntentDetection(MYOClassifier);
 
 
-//int main1() {
-//	std::vector <std::string> v;
-//	v = {};// "Fist_Training.csv", "PointTraining.csv", "ButtonTraining.csv", "ExtensionTraining.csv", "OKTraining.csv", "ThumbOppoTraining.csv"};
-//
-//	//MYOClassifier mc = MYOClassifier(v);
-//	SparGlove sg;
-//
-//	sg.on_enable();
-//	sg.zero_encoders();
-//
-//	sg.on_enable();
-//	sg.start_myo();
-//	//sg.start_turning();
-//	
-//
-//	return 0;
-//
-//}
+int main2() {
+	//std::vector <std::string> v;
+	//v = {};// "Fist_Training.csv", "PointTraining.csv", "ButtonTraining.csv", "ExtensionTraining.csv", "OKTraining.csv", "ThumbOppoTraining.csv"};
 
-int main() {
+	//MYOClassifier mc = MYOClassifier(v);
+	SparGlove sg;
+	sg.on_disable();
+
+	sg.on_enable();
+	sg.zero_encoders();
+	while (true) {
+		sg.on_enable();
+	}
+	//sg.start_myo();
+	//sg.start_turning();
+	//sg.start_homing();
+
+	sg.step_home();
+	sg.on_disable();
+	return 0;
+
+}
+
+int main1() {
 	std::vector <std::string> v;
 	v = { "PoseButtonTraining.csv", "PoseExtensionTraining.csv", "PoseOKTraining.csv", "PosePointTraining.csv", "PoseCylinderTraining.csv" ,  "PoseThumbOppoTraining.csv", "PoseThumbsUpTraining.csv" };
 
@@ -101,7 +148,7 @@ int main() {
 
 	//sg.enable();
 
-	MYOClassifier mc = MYOClassifier(v);
+	//MYOClassifier mc = MYOClassifier(v);
 
 	return 0;
 }

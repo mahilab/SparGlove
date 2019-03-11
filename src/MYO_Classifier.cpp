@@ -1,90 +1,43 @@
-#include "MYO_Classifier.hpp"
+
+#include <MEL/Logging/Log.hpp>
+#include <MEL/Core/Console.hpp>
+#include <MEL/Communications/MelShare.hpp>
+#include <MEII/EMG/MesArray.hpp>
+#include "MEL/Daq/Quanser/Q8Usb.hpp"
+#include "MEL/Utility/System.hpp"
+#include <MEII/EMG/MyoelectricSignal.hpp>
+#include "MEL/Devices/Windows/Keyboard.hpp"
+#include "MEII/Classification/EmgDirClassifier.hpp"
+#include <MEL/Core/Clock.hpp>
+#include <MEL/Logging/DataLogger.hpp>
+#include <MEL/Core/Timer.hpp>
+#include <MEII/EMG/EmgDataCapture.hpp>
+#include <MEL/Daq/Quanser/Q8Usb.hpp>
+#include <MEL/Devices/VoltPaqX4.hpp>
+#include <MEL/Devices/Myo/MyoBand.hpp>
+#include <MEII/EMG/EmgDataCapture.hpp>
+#include <MEII/EmgRealTimeControl/EmgRealTimeControl.hpp>
+#include <MEL/Math/Butterworth.hpp>
+#include <SparGlove.hpp>
+
+#include <iterator>
+#include <iostream>
+#include <fstream>
+#include <sstream>
+#include <vector>
+#include <string>
+#include <stdio.h>
+
 using namespace mel;
 using namespace meii;
 
-//ctrl_bool ctrlc(false);
-//bool handler(CtrlEvent event) {
-//	ctrlc = true;
-//	return true;
-//}
+int main() {
+	std::vector <std::string> training_files;
+	std::string training_dir = "../../build/";
+	//training_files = { "PoseButtonTraining.csv", "PoseExtensionTraining.csv", "PoseOKTraining.csv", "PosePointTraining.csv", "PoseCylinderTraining.csv" ,  "PoseThumbOppoTraining.csv", "PoseThumbsUpTraining.csv" };
 
-//ctrl_bool cancel(false);
-//bool handler(CtrlEvent event) {
-//    cancel = true;
-//    return true;
-//}
+	training_files = { "SCI_Point_Training.csv", "SCI_Extension_Training.csv", "SCI_Oppo_Training.csv", "SCI_ok_Training.csv", "SCI_ThumbsUp_Training.csv" ,  "SCI_Cylinder_Training.csv", "SCI_Button_Training.csv" };
 
-//class MYOClassifier {
-class CSVRow
-{
-public:
-	std::string const& operator[](std::size_t index) const
-	{
-		return m_data[index];
-	}
-	std::size_t size() const
-	{
-		return m_data.size();
-	}
-	void readNextRow(std::istream& str)
-	{
-		std::string         line;
-		std::getline(str, line);
-
-		std::stringstream   lineStream(line);
-		std::string         cell;
-		m_data.clear();
-		while (std::getline(lineStream, cell, ','))
-		{
-			m_data.push_back(cell);
-		}
-		// This checks for a trailing comma with no data after it.
-		if (!lineStream && cell.empty())
-		{
-			// If there was a trailing comma then add an empty element.
-			m_data.push_back("");
-		}
-	}
-
-private:
-	std::vector<std::string>    m_data;
-
-};
-
-std::istream& operator>>(std::istream& str, CSVRow& data)
-{
-	data.readNextRow(str);
-	return str;
-}
-
-class CSVIterator
-{
-public:
-	typedef std::input_iterator_tag     iterator_category;
-	typedef CSVRow                      value_type;
-	typedef std::size_t                 difference_type;
-	typedef CSVRow*                     pointer;
-	typedef CSVRow&                     reference;
-
-	CSVIterator(std::istream& str) :m_str(str.good() ? &str : NULL) { ++(*this); }
-	CSVIterator() :m_str(NULL) {}
-
-	// Pre Increment
-	CSVIterator& operator++() { if (m_str) { if (!((*m_str) >> m_row)) { m_str = NULL; } }return *this; }
-	// Post increment
-	CSVIterator operator++(int) { CSVIterator    tmp(*this); ++(*this); return tmp; }
-	CSVRow const& operator*()   const { return m_row; }
-	CSVRow const* operator->()  const { return &m_row; }
-
-	bool operator==(CSVIterator const& rhs) { return ((this == &rhs) || ((this->m_str == NULL) && (rhs.m_str == NULL))); }
-	bool operator!=(CSVIterator const& rhs) { return !((*this) == rhs); }
-private:
-	std::istream*       m_str;
-	CSVRow              m_row;
-};
-
-MYOClassifier::MYOClassifier(std::vector<std::string> training_files) { //, SparGlove& sg) {
-	
 	// handle inputs
 	std::vector<uint32> emg_channel_numbers = { 0,1,2,3,4,5,6,7 };
 
@@ -114,11 +67,11 @@ MYOClassifier::MYOClassifier(std::vector<std::string> training_files) { //, Spar
 	bool WL = false;
 	bool ZC = false;
 	bool SSC = false;
-	bool AR1 = false;
-	bool AR2 = false;
-	bool AR3 = false;
-	bool AR4 = false;
-	EmgDirClassifier dir_classifier(num_classes, emg_channel_numbers.size(), Ts, RMS, MAV, WL, ZC, SSC, AR1, AR2, AR3, AR4, seconds(1.0), seconds(0.2), seconds(0.9));
+	bool AR1 = true;
+	bool AR2 = true;
+	bool AR3 = true;
+	bool AR4 = true;
+	EmgDirClassifier dir_classifier(num_classes, emg_channel_numbers.size(), Ts, RMS, MAV, WL, ZC, SSC, AR1, AR2, AR3, AR4, seconds(0.4), seconds(0.2), seconds(0.3));
 
 	bool run = false;
 	Clock cooldown_clock;
@@ -130,85 +83,40 @@ MYOClassifier::MYOClassifier(std::vector<std::string> training_files) { //, Spar
 	// construct timer in hybrid mode to avoid using 100% CPU
 	Timer timer(Ts, Timer::Hybrid);
 
-	int pose = 0;
 
-	int*** read_in_object = new int**[7];
-
-	for (std::vector<std::string>::iterator it = training_files.begin(); it != training_files.end(); ++it) {
-		Parse(*it, read_in_object);
-		
-		std::cout << "MES Array is size ";
-		std::cout << mes_active_capture_window_size << std::endl;
-
-		for (int k = 0; k <= 6; k++) {
-			std::vector<std::vector<double>> training_set;
-
-			for (int L = 0; L < 200; L++) {
-				std::vector<double> row;
-
-				for (int m = 0; m < 8; m++) {
-					
-					row.push_back(read_in_object[k][L][m]);  //converts integers in input file to double precision which RealTimeClassifier expects
-					
-				}
-				training_set.push_back(row);
-			//	std::cout << row << std::endl;
-			}
-			dir_classifier.add_training_data(pose, training_set);
-
-			//std::cout << training_set.size() << std::endl;
-
-			if (dir_classifier.add_training_data(pose, training_set)) {
+	//int*** read_in_object = new int**[7];
+	//std::vector<std::vector<std::vector<double>>> read_in_object;
+	
+	std::vector<std::vector<double>> training_file_data;
+	
+	//std::vector<std::vector<double>> read_in_object;
+	
+	for (int pose = 0; pose < training_files.size(); pose++) {
+		//read_in_object = std::vector<std::vector<std::vector<double>>>(7);
+		DataLogger::read_from_csv(training_file_data, training_dir + training_files[pose]);
+	
+			if (dir_classifier.add_training_data(pose, training_file_data)) {
 				LOG(Info) << "Added active data for target " + stringify(pose + 1) + ".";
 			}
-			
-		}
-		pose++;
-		
+	
 	}
-
-	for (int i = 0; i < 7; i++) {
-		for (int j = 0; j < 200; j++) {
-			delete read_in_object[i][j];
-		}
-		delete read_in_object[i];
-	}
-	delete read_in_object;
 
 	// prompt the user for input
 	print("Press 'A + target #' to add training data for one target.");
 	print("Press 'C + target #' to clear training data for one target.");
-	print("Number of targets/classes is:");
-	print(num_classes);
 	print("Press 'T' to train classifier and begin real-time classification.");
 	print("Press 'U' to use the classifier on a pre-existing data file");
-	print("Press 'R' to run the OpenWrist");
-	print("Press 'S' to stop the OpenWrist");
+	print("Press 'R' to report the boolean settings");
 	print("Press 'Escape' to exit.");
 
 	//myo.enable();
 
+	std::vector<std::vector<double>> w;
+	std::vector<double> w_0;
+	std::vector<double> y(7);
+
 	while (true) {
-		
-		// update all DAQ input channels
-		//myo.update();
-
-		// emg signal processing
-		//mes.update_and_buffer();
-		
-		// predict state
-		//if (dir_classifier.update(mes.get_demean())) {
-			//pred_label = dir_classifier.get_class();
-			//sg.notify(pred_label);
-			//std::cout << "MYO_Classifier thinks pred_label is" << std::endl;
-
-			//std::cout << dir_classifier.get_class() << std::endl;
-
-	//		std::cout << "Counter is " << std::endl;
-
-		//	std::cout << counter	<< std::endl;
-		//}
-
+	
 		// clear active data
 		for (std::size_t k = 0; k < num_classes; ++k) {
 			if (Keyboard::are_all_keys_pressed({ Key::C, active_keys[k] })) {
@@ -246,70 +154,72 @@ MYOClassifier::MYOClassifier(std::vector<std::string> training_files) { //, Spar
 			}
 		}
 
+
+		// train the active/rest classifiers
+		if (Keyboard::is_key_pressed(Key::R)) {
+			if (keypress_refract_clock.get_elapsed_time() > keypress_refract_time) {
+				std::cout << "Boolean settings are: ";
+				std::cout << "RMS = " << RMS << ", MAV = " << MAV << ", WL = " << WL << ", ZC = " << ZC << ", SSC = " << SSC << ", AR1 = " << AR1 << ", AR2 = " << AR2 << ", AR3 = " << AR3 << ", AR4 = " << AR4;
+				}
+				keypress_refract_clock.restart();
+			}
+
 		if (Keyboard::is_key_pressed(Key::U)) {
 			if (dir_classifier.is_trained()) {
 				
 				std::string file_to_parse;
 				std::cout << "Which file would you like to classify?" << std::endl;
 				std::getline(std::cin, file_to_parse);
-				pred_label = 9;
+				//pred_label = 9;
+				//std::cout << pred_label << std::endl;
+
+				std::vector<std::vector<double>> test_file_data;
+				DataLogger::read_from_csv(test_file_data, training_dir +file_to_parse);
+				for (int i = 0; i < test_file_data.size(); i++) {
+					dir_classifier.update(test_file_data[i]);
+				}
+						
+				pred_label = dir_classifier.get_class();
+
+				//dir_classifier.get_model(w, w_0);
+				y = dir_classifier.get_model_output();
+
+
+				//if (dir_classifier.update(butt_class)) {
+				std::cout << "And the winner is..." ;
 				std::cout << pred_label << std::endl;
-
-				int*** data_to_classify = new int**[1];
-
-				//int counter1 = 0;
 				
-				//int counter3 = 0;
-				//for (std::vector<std::string>::iterator it = file_to_parse.begin(); it != file_to_parse.end(); ++it) {
-					Parse(file_to_parse, data_to_classify);
+				//int bucket = dir_classifier.get_class();
+				
+				switch (pred_label)
+				{
+				case 0: std::cout << "Pointing" << std::endl;
+					break;
+				case 1: std::cout << "Extension (outstretched palm)" << std::endl;
+					break;
+				case 2: std::cout << "Thumb Opposition" << std::endl;
+					break;
+				case 3: std::cout << "OK Sign (i.e. Pinch)" << std::endl;
+					break;
+				case 4: std::cout << "Thumbs Up (Hook)" << std::endl;
+					break;
+				case 5: std::cout << "Cylinder Grasp" << std::endl;
+					break;
+				case 6: std::cout << "Button Press" << std::endl;
+					break;
+				}
+				//std::cout << pred_label << std::endl;
 
-						for (int L = 0; L < 200; L++) {
-							std::vector<double> row;
-							//counter1++;
-							//std::cout << "counter1 = ";
-							//std::cout << counter1 << std::endl;
-							//int counter2 = 0;
-							for (int m = 0; m < 8; m++) {
-							//	counter2++;
-							//	std::cout << "counter2 = ";
-							//	std::cout << counter2 << std::endl;
-								row.push_back(data_to_classify[0][L][m]);  //converts integers in input file to double precision which RealTimeClassifier expects
-							
-							}
-							//classification_set.push_back(row);
-							if (dir_classifier.update(row)) {
-								std::cout << "Should be ready to make a prediction" << std::endl;
-							}
+				 
+				std::cout << "Confidence Measurements:" << std::endl;
+				std::cout << "Get Model Output:" << std::endl;
+				std::cout << y << std::endl;
+				//std::cout << w_0 << std::endl;
+				y = dir_classifier.get_class_posteriors();
+				std::cout << "Get Class Posteriors:" << std::endl;
+				std::cout << y << std::endl;
+				std::cout << " " << std::endl;
 
-						}
-
-						pred_label = dir_classifier.get_class();
-
-						/*
-						std::cout << classification_set.size() << std::endl;
-
-						Butterworth filter(8, hertz(1000), .05);
-					    
-						std::vector<double> butt_class;
-
-						for (int i = 0; i < 200; i++) {
-							butt_class[i] = filter.update(classification_set[1][i]);
-						}
-*/
-	//					if (dir_classifier.update(butt_class)) {
-							std::cout << "And the winner is..." << std::endl;
-							//int bucket = dir_classifier.get_class();
-							std::cout << pred_label << std::endl;
-
-							std::cout << "We've made a prediction!" << std::endl; 
-							
-							for (int i = 0; i < 1; i++) {
-								for (int j = 0; j < 200; j++) {
-									delete data_to_classify[i][j];
-								}
-								delete data_to_classify[i];
-							}
-							delete data_to_classify;
 			}
 			else
 				std::cout << "You must train the algorithm before attempting to Use a data set" << std::endl;
@@ -330,46 +240,6 @@ MYOClassifier::MYOClassifier(std::vector<std::string> training_files) { //, Spar
 
 	} // end control loop
 
-	return;
-}
-
-MYOClassifier::~MYOClassifier()
-{
-}
-
-int*** MYOClassifier::Parse(std::string filename, int*** shell_array) {
-
-	std::ifstream       file(filename);
-
-	int i = 0;
-	int h = 0;
-
-	for (CSVIterator row(file); row != CSVIterator(); ++row)
-	{
-
-		if (i == 0) {
-			shell_array[h] = new int*[200];
-
-		}
-
-		shell_array[h][i] = new int[8];
-		for (int j = 0; j < 8; j++) {
-			shell_array[h][i][j] = std::stoi((*row)[j]);
-		}
-
-		i++;
-		//prompt("Press Enter");
-		if (i == 200) {
-			i = 0;
-			h++;
-		}
-	}
-
-	//prompt("Press Enter");
-	file.close();
-
-
-	//return Training_Sets;
-	
+	return 0;
 }
 
