@@ -32,9 +32,10 @@ using namespace mel;
 int main(int argc, char const *argv[])
 {
 	SparGlove sg;
-//	sg.enable;
-	sg.step_home();
-
+	sg.enable();
+	//sg.zero_encoders();
+	//sg.step_home();
+	sg.start_myo();
 	//sg.disable();
 	//sg.on_disable();
 	return 0;
@@ -127,9 +128,9 @@ int main2() {
 
 	sg.on_enable();
 	sg.zero_encoders();
-	while (true) {
-		sg.on_enable();
-	}
+	//while (true) {
+	//	sg.on_enable();
+	//}
 	//sg.start_myo();
 	//sg.start_turning();
 	//sg.start_homing();

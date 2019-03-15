@@ -9,7 +9,8 @@
 #include "MEL/Devices/Windows/Keyboard.hpp"
 #include "MEII/Classification/EmgDirClassifier.hpp"
 #include <MEL/Core/Clock.hpp>
-#include <MEL/Logging/DataLogger.hpp>
+#include <MEII/Utility/DataLogger.hpp>
+
 #include <MEL/Core/Timer.hpp>
 #include <MEII/EMG/EmgDataCapture.hpp>
 #include <MEL/Daq/Quanser/Q8Usb.hpp>
@@ -36,12 +37,20 @@ int main() {
 	std::string training_dir = "../../build/";
 	//training_files = { "PoseButtonTraining.csv", "PoseExtensionTraining.csv", "PoseOKTraining.csv", "PosePointTraining.csv", "PoseCylinderTraining.csv" ,  "PoseThumbOppoTraining.csv", "PoseThumbsUpTraining.csv" };
 
-	training_files = { "SCI_Point_Training.csv", "SCI_Extension_Training.csv", "SCI_Oppo_Training.csv", "SCI_ok_Training.csv", "SCI_ThumbsUp_Training.csv" ,  "SCI_Cylinder_Training.csv", "SCI_Button_Training.csv" };
+	training_files = { "SCI_Point_Training.csv", 
+					   "SCI_Extension_Training.csv", 
+					   "SCI_Oppo_Training.csv", 
+					   "SCI_ok_Training.csv", 
+					   "SCI_ThumbsUp_Training.csv" ,  
+					   "SCI_Cylinder_Training.csv", 
+					   "SCI_Button_Training.csv" };	
 
 	// handle inputs
 	std::vector<uint32> emg_channel_numbers = { 0,1,2,3,4,5,6,7 };
-
+	std::cout << "Made it this far" << std::endl;
 	mel::MyoBand myo("my_myo");
+
+
 
 	// construct array of Myoelectric Signals
 	MesArray mes(myo.get_channels(emg_channel_numbers));
@@ -61,6 +70,7 @@ int main() {
 	std::size_t pred_label = 0;
 	std::size_t prev_pred_label = 0;
 
+	
 	// initialize classifier
 	bool RMS = true;
 	bool MAV = false;
@@ -109,7 +119,7 @@ int main() {
 	print("Press 'R' to report the boolean settings");
 	print("Press 'Escape' to exit.");
 
-	//myo.enable();
+	myo.enable();
 
 	std::vector<std::vector<double>> w;
 	std::vector<double> w_0;
