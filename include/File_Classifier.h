@@ -1,7 +1,6 @@
 #pragma once
-
-#ifndef MYO_CLASSIFIER_HPP
-#define MYO_CLASSIFIER_HPP
+#ifndef File_CLASSIFIER_HPP
+#define File_CLASSIFIER_HPP
 
 #include <MEL/Logging/Log.hpp>
 #include <MEL/Core/Console.hpp>
@@ -13,7 +12,7 @@
 #include "MEL/Devices/Windows/Keyboard.hpp"
 #include "MEII/Classification/EmgDirClassifier.hpp"
 #include <MEL/Core/Clock.hpp>
-//#include <MEL/Logging/DataLogger.hpp>
+#include <MEL/Logging/DataLogger.hpp>
 #include <MEL/Core/Timer.hpp>
 #include <MEII/EMG/EmgDataCapture.hpp>
 #include <MEL/Daq/Quanser/Q8Usb.hpp>
@@ -34,21 +33,19 @@
 
 
 
-class MYOClassifier {
+class FileClassifier {
 
 public:
 	//Constructor
-	MYOClassifier(std::vector<std::string> training_files); // , SparGlove& sg);
+	FileClassifier(std::vector<std::string> sample_files); // , SparGlove& sg);
 
-	//Destructor
-	~MYOClassifier();
+															//Destructor
+	~FileClassifier();
 
-	//int*** Parse(std::string, int*** Training_Sets);
+	int*** Parse(std::string);
 
 
 
 };
 
 #endif // !MYO_CLASSIFIER_HPP
-
-

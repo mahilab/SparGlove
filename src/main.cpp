@@ -5,19 +5,10 @@
 #include <MEL/Core/Console.hpp>
 #include <MEL/Logging/Log.hpp>
 
-
 //#include "SparGlove.hpp"
-
-
 
 #include <MEL/Devices/Windows/Keyboard.hpp>
 #include "MYO_Classifier.hpp"
-
-
-
-
-
-
 #include <MEL/Daq/Quanser/Q8Usb.hpp>
 #include <MEL/Core.hpp>
 #include <MEL/Communications.hpp>
@@ -35,7 +26,11 @@ int main(int argc, char const *argv[])
 	sg.enable();
 	//sg.zero_encoders();
 	//sg.step_home();
-	sg.start_myo();
+	//sg.start_myo();
+	//sg.start_homing();
+	//sg.offset();
+	//sg.start_turning();
+	sg.instrumented_hand();
 	//sg.disable();
 	//sg.on_disable();
 	return 0;
@@ -116,43 +111,43 @@ return 0;
 
 //	std::thread myThread(threadFunction);
 //std::thread IntentDetection(MYOClassifier);
-
-
-int main2() {
-	//std::vector <std::string> v;
-	//v = {};// "Fist_Training.csv", "PointTraining.csv", "ButtonTraining.csv", "ExtensionTraining.csv", "OKTraining.csv", "ThumbOppoTraining.csv"};
-
-	//MYOClassifier mc = MYOClassifier(v);
-	SparGlove sg;
-	sg.on_disable();
-
-	sg.on_enable();
-	sg.zero_encoders();
-	//while (true) {
-	//	sg.on_enable();
-	//}
-	//sg.start_myo();
-	//sg.start_turning();
-	//sg.start_homing();
-
-	sg.step_home();
-	sg.on_disable();
-	return 0;
-
-}
-
-int main1() {
-	std::vector <std::string> v;
-	v = { "PoseButtonTraining.csv", "PoseExtensionTraining.csv", "PoseOKTraining.csv", "PosePointTraining.csv", "PoseCylinderTraining.csv" ,  "PoseThumbOppoTraining.csv", "PoseThumbsUpTraining.csv" };
-
-	//SparGlove sg;
-
-	//sg.enable();
-
-	//MYOClassifier mc = MYOClassifier(v);
-
-	return 0;
-}
+//
+//
+//int main2() {
+//	//std::vector <std::string> v;
+//	//v = {};// "Fist_Training.csv", "PointTraining.csv", "ButtonTraining.csv", "ExtensionTraining.csv", "OKTraining.csv", "ThumbOppoTraining.csv"};
+//
+//	//MYOClassifier mc = MYOClassifier(v);
+//	SparGlove sg;
+//	sg.on_disable();
+//
+//	sg.on_enable();
+//	sg.zero_encoders();
+//	//while (true) {
+//	//	sg.on_enable();
+//	//}
+//	//sg.start_myo();
+//	//sg.start_turning();
+//	//sg.start_homing();
+//
+//	sg.step_home();
+//	sg.on_disable();
+//	return 0;
+//
+//}
+//
+//int main1() {
+//	std::vector <std::string> v;
+//	v = { "PoseButtonTraining.csv", "PoseExtensionTraining.csv", "PoseOKTraining.csv", "PosePointTraining.csv", "PoseCylinderTraining.csv" ,  "PoseThumbOppoTraining.csv", "PoseThumbsUpTraining.csv" };
+//
+//	//SparGlove sg;
+//
+//	//sg.enable();
+//
+//	//MYOClassifier mc = MYOClassifier(v);
+//
+//	return 0;
+//}
 //
 //int main2() {
 //	Q8Usb q8;

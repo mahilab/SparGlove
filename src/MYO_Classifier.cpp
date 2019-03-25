@@ -81,7 +81,7 @@ int main() {
 	bool AR2 = true;
 	bool AR3 = true;
 	bool AR4 = true;
-	EmgDirClassifier dir_classifier(num_classes, emg_channel_numbers.size(), Ts, RMS, MAV, WL, ZC, SSC, AR1, AR2, AR3, AR4, seconds(0.4), seconds(0.2), seconds(0.3));
+	EmgDirClassifier dir_classifier(num_classes, emg_channel_numbers.size(), Ts, RMS, MAV, WL, ZC, SSC, AR1, AR2, AR3, AR4, seconds(0.2), seconds(0.2), seconds(0.2));
 
 	bool run = false;
 	Clock cooldown_clock;
@@ -92,7 +92,7 @@ int main() {
 
 	// construct timer in hybrid mode to avoid using 100% CPU
 	Timer timer(Ts, Timer::Hybrid);
-
+	timer.set_acceptable_miss_rate(0.3);
 
 	//int*** read_in_object = new int**[7];
 	//std::vector<std::vector<std::vector<double>>> read_in_object;
@@ -158,7 +158,7 @@ int main() {
 			if (keypress_refract_clock.get_elapsed_time() > keypress_refract_time) {
 				if (dir_classifier.train()) {
 					LOG(Info) << "Trained new active/rest classifier based on given data.";
-					dir_classifier.save();
+					dir_classifier.save("real_time_multi_classifier", "my_files", true);
 				}
 				keypress_refract_clock.restart();
 			}
